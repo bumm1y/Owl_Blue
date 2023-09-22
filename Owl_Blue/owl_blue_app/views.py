@@ -4,3 +4,4 @@ from django.shortcuts import render
 
 def index(request):
     return render(request, 'owl_blue_app/index.html')
+
