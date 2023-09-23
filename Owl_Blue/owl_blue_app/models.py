@@ -5,7 +5,7 @@ from django.db import models
 class Abecedario(models.Model):
     idabc = models.AutoField(primary_key=True)
     letra = models.CharField(max_length=1, unique=True)
-    linkimg = models.CharField(max_length=500, unique=True)
+    linkimg = models.CharField(max_length=1000, unique=True)
 
     def __str__(self):
         return f"{self.idabc}, {self.letra}, {self.linkimg}"
@@ -22,8 +22,8 @@ class Categoria(models.Model):
 
 class Explicaciones(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    img = models.CharField(max_length=500, unique=True)
-    vid = models.CharField(max_length=500, unique=True)
+    img = models.CharField(max_length=1000, unique=True)
+    vid = models.CharField(max_length=1000, unique=True)
 
     def __str__(self):
         return f"{self.categoria}, {self.img}, {self.vid}"
@@ -32,7 +32,7 @@ class Explicaciones(models.Model):
 
 class Actividades(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    videos = models.CharField(max_length=500)
+    videos = models.CharField(max_length=1000)
 
     def __str__(self):
         return f"{self.categoria}, {self.videos}"
