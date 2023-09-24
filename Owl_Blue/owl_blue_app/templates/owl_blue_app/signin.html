@@ -1,0 +1,27 @@
+{% extends 'owl_blue_app/base.html' %}
+{% load static %}
+
+{% block header %}
+    <title>Owl Blue | Log In</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
+    <h1>LOGIN</h1>
+    {{error}}
+    <p></p>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label for="id_username">Nombre de usuario:</label>
+            <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+        </p>
+        <p>
+            <label for="id_password">Contraseña:</label>
+            <input type="password" name="password" minlength= "8" maxlength="16" autocomplete="password" required="" id="id_password">
+        </p>
+      <p></p>
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+    </form>
+{% endblock %}

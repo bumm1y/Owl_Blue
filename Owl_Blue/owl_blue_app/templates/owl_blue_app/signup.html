@@ -1,0 +1,51 @@
+{% extends 'owl_blue_app/base.html' %}
+{% load static %}
+
+{% block header %}
+    <title>Owl Blue | Sign Up</title>
+
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1> SIGN UP </h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{error}}
+        <p></p>
+        <p>
+            <label for="id_email">Email:</label>
+            <input type="email" name="email" maxlength="50" autocapitalize="none" autocomplete="email" required="" id="id_email">
+        </p>
+        <p>
+            <label for="id_username">Nombre de usuario:</label>
+            <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+            <span class="helptext">Caracteres máximos: 16. Solo están permitidos las letras y los dígitos.</span>
+        </p>
+        <p>
+            <label for="id_password1">Contraseña:</label>
+            <input type="password" name="password1" minlength= "8" maxlength="16" pattern="[a-zA-Z0-9]+" autocomplete="new-password" required="" id="id_password1">
+            <span class="helptext"></span>
+        </p>
+        <ul>
+            <li>
+                Tu contraseña debe tener 8 caracteres como mínimo (y como máximo 16).
+                <p></p>
+            </li>
+            <li>
+                Tu contraseña debe contener una minúscula, una mayúscula y un número.
+            </li>
+        </ul>
+      <p></p>
+      <p>
+        <label for="id_password2">Confirmación de contraseña:</label>
+        <input type="password" name="password2" minlength= "8" maxlength="16" pattern="[a-zA-Z0-9]+" autocomplete="new-password" required="" id="id_password2">
+        <span class="helptext">Verifica tu contraseña.</span>    
+      </p>
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+    </form>
+</body>
+</html>
+{% endblock %}

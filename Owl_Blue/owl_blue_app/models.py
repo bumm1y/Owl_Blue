@@ -1,4 +1,6 @@
 from django.db import models
+from django.core import validators
+from django.core.validators import MinLengthValidator, MaxLengthValidator
 
 ''' Tablas de contenido '''
 
@@ -40,9 +42,13 @@ class Actividades(models.Model):
 ''' Tabla de usuarios registrados '''
 
 class Usuarios(models.Model):
-    username = models.CharField(max_length=16, unique=True)
-    email = models.CharField(max_length=50, unique=True)
-    passwd = models.CharField(max_length=16)
+    username = models.CharField(max_length=16, unique=True, validators=[validators.RegexValidator(
+        regex='^[a-zA-Z0-9]+$',
+        message='El usuario ingresado no cumple lo requerido.',
+        code='usuario_inválido'
+    )])
+    email = models.EmailField(unique=True)
+    passwd = models.CharField(max_length=16, validators=[MinLengthValidator(8), MaxLengthValidator(16)])
 
     def __str__(self):
         return f"{self.username}, {self.email}, {self.passwd}"
