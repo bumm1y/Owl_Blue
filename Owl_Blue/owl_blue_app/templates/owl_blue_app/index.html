@@ -3,13 +3,13 @@
 
 {% block header %}
     <title>Owl Blue | Home</title>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <script src="{% static 'js/index.js' %}"></script> <!-- Mensaje de confirmación en js-->
 {% endblock %}
 
 {% block content %}
     <img src="{% static 'img/owlblue_icon1.png' %}">
-    <!-- Mensaje de bienvenida (post-registro) -->
+    <!-- Mensaje de confirmación (post-registro) -->
     {% if mensaje_confirmacion %}
     <div id="check">
         {{ mensaje_confirmacion }}

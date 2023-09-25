@@ -3,15 +3,13 @@
 
 {% block header %}
     <title>Owl Blue | Sign Up</title>
-
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 {% endblock %}
-
 {% block content %}
     <h1> SIGN UP </h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{error}}
+    <form method="POST"> <!-- Formulario SignupForm-->
+        {% csrf_token %} <!-- Validación CSRF de Django (Medida de seguridad)-->
+        {{error}} <!-- Error definido en 'views.py'-->
         <p></p>
         <p>
             <label for="id_email">Email:</label>

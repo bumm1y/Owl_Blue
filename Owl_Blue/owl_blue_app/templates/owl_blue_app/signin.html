@@ -7,10 +7,10 @@
 {% endblock %}
 {% block content %}
     <h1>LOGIN</h1>
-    {{error}}
+    {{error}} <!-- Muestra un error definido en 'views.py' si se envían datos erróneos-->
     <p></p>
-    <form method="POST">
-        {% csrf_token %}
+    <form method="POST"> <!-- Formulario LoginForm-->
+        {% csrf_token %} <!-- Validación CSRF de Django (Medida de seguridad)-->
         <p>
             <label for="id_username">Nombre de usuario:</label>
             <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">

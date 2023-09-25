@@ -11,14 +11,15 @@ class Abecedario(models.Model):
 
     def __str__(self):
         return f"{self.idabc}, {self.letra}, {self.linkimg}"
-    
+
+
 ''' Foerign Key '''
 
 class Categoria(models.Model):
-    nom_categoria = models.CharField(max_length=20, unique=True)
+    categoria = models.CharField(max_length=20, unique=True)
 
     def __str__(self):
-        return self.nom_categoria
+        return self.categoria
     
 ''' Tabla de explicaciones'''
 
@@ -44,8 +45,6 @@ class Actividades(models.Model):
 class Usuarios(models.Model):
     username = models.CharField(max_length=16, unique=True, validators=[validators.RegexValidator(
         regex='^[a-zA-Z0-9]+$',
-        message='El usuario ingresado no cumple lo requerido.',
-        code='usuario_inválido'
     )])
     email = models.EmailField(unique=True)
     passwd = models.CharField(max_length=16, validators=[MinLengthValidator(8), MaxLengthValidator(16)])

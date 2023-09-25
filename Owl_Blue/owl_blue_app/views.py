@@ -3,6 +3,7 @@ from .forms import SignupForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from .models import Categoria
 
 # Página home
 def index(request):
@@ -58,4 +59,6 @@ def signout(request):
 ''' Actividades() '''
 
 def acts(request):
-    return render(request, 'owl_blue_app/acts.html')
+    acts = Categoria.objects.all()
+    return render(request, 'owl_blue_app/acts.html', {
+        'acts': acts})

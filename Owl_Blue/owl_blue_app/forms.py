@@ -11,7 +11,7 @@ class SignupForm(forms.ModelForm):
         widget=forms.PasswordInput,  # <-- Ocultar contraseña
         min_length=8,
         max_length=16,
-        label=('Contraseña')  # <-- Simil a 'label' html   
+        label=('Contraseña')  # <-- Simil a 'label' de html   
     )
 
 ''' Formulario personalizado Login '''

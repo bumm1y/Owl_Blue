@@ -7,6 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
         mensajeConfirmacion.style.display = 'block';
         setTimeout(function () {
             mensajeConfirmacion.style.display = 'none';
-        }, 3000); // Oculta el mensaje (5 sec después)
+        }, 3000); // Oculta el mensaje (3 sec después)
     }
 });

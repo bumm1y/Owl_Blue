@@ -7,4 +7,11 @@
 {% endblock %}
 {% block content %}
     <h1> ACTIVIDADES </h1>
+    <ul>
+        {% for act in acts %} <!--Imprime en un ciclo 'for' cada categoria en la clase 'Categoria'-->
+        <li>
+            {{act.categoria}}
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
