@@ -13,7 +13,7 @@ class Abecedario(models.Model):
         return f"{self.idabc}, {self.letra}, {self.linkimg}"
 
 
-''' Foerign Key '''
+''' Foreign Key '''
 
 class Categoria(models.Model):
     categoria = models.CharField(max_length=20, unique=True)
