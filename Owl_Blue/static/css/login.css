@@ -1,4 +1,33 @@
+/* Color del fondo */
 body {
-    background: rgb(250, 238, 197);
+    background: rgb(128, 203, 234);
     color: black;
+}
+
+/* Estilo para los formularios y etiquetas */
+.form-group {
+    margin-bottom: 5px !important;
+}
+
+.form-group input {
+    margin-bottom: 5px !important;
+}
+
+.form-group label {
+    font-weight: bold !important;
+}
+
+/* Estilo para los botones */
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Estilo para centrar el botón */
+.btn-block {
+    display: block;
+    width: 100%;
 }

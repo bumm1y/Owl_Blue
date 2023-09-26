@@ -6,22 +6,27 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
 {% block content %}
-    <h1>LOGIN</h1>
-    {{error}} <!-- Muestra un error definido en 'views.py' si se envían datos erróneos-->
-    <p></p>
-    <form method="POST"> <!-- Formulario LoginForm-->
-        {% csrf_token %} <!-- Validación CSRF de Django (Medida de seguridad)-->
-        <p>
-            <label for="id_username">Nombre de usuario:</label>
-            <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
-        </p>
-        <p>
-            <label for="id_password">Contraseña:</label>
-            <input type="password" name="password" minlength= "8" maxlength="16" autocomplete="password" required="" id="id_password">
-        </p>
-      <p></p>
-      <p>
-        <button type="submit">Submit</button>
-      </p>
-    </form>
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-4">
+            <form method="POST" class="card card-body"> <!-- Formulario LoginForm-->
+                <h1 class="text-center">-----o LOG IN o-----</h1>
+                {{error}} <!-- Muestra un error definido en 'views.py' si se envían datos erróneos-->
+                {% csrf_token %} <!-- Validación CSRF de Django (Medida de seguridad)-->
+                <div class="mb-3 form-group">
+                    <label for="id_username">Nombre de usuario:</label>
+                    <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+                </div>
+                <div class="mb-3 form-group">
+                    <label for="id_password">Contraseña:⠀</label>
+                    <input type="password" name="password" minlength= "8" maxlength="16" autocomplete="password" required="" id="id_password">
+                </div>
+              <p></p>
+              <button class="btn btn-primary">Log In</button>
+            </form>
+        </div>
+    </div>
+</main>
+
 {% endblock %}

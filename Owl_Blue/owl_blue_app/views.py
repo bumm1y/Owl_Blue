@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .models import Categoria
+from django.contrib.auth.decorators import login_required
 
 # Página home
 def index(request):
@@ -29,9 +30,9 @@ def signup(request):
                 return redirect('home')
             except IntegrityError:
                 return render(request, 'owl_blue_app/signup.html', {
-            'form': form, 'error': 'El usuario o correo ingresado ya existe'})
+            'form': form, 'error': '[!] El usuario o correo ingresado ya existe'})
         return render(request, 'owl_blue_app/signup.html', {
-            'form': form, 'error': 'Las contraseñas no coinciden'})
+            'form': form, 'error': '[!] Las contraseñas no coinciden'})
 
 
 # Login
@@ -47,7 +48,7 @@ def signin(request):
         ])
         if user is None:
             return render(request, 'owl_blue_app/signin.html', {
-                'form': form, 'error': 'El usuario o la contraseña son incorrectos'})
+                'form': form, 'error': '[!] El usuario o la contraseña son incorrectos.'})
         else:
             login(request, user)
             return redirect('home')
@@ -58,6 +59,7 @@ def signout(request):
 
 ''' Actividades() '''
 
+@login_required # Se necesita estar logeado para ingresar a actividades
 def acts(request):
     acts = Categoria.objects.all()
     return render(request, 'owl_blue_app/acts.html', {

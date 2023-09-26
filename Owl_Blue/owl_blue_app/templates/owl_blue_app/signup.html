@@ -6,44 +6,53 @@
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 {% endblock %}
 {% block content %}
-    <h1> SIGN UP </h1>
-    <form method="POST"> <!-- Formulario SignupForm-->
-        {% csrf_token %} <!-- Validación CSRF de Django (Medida de seguridad)-->
-        {{error}} <!-- Error definido en 'views.py'-->
-        <p></p>
-        <p>
-            <label for="id_email">Email:</label>
-            <input type="email" name="email" maxlength="50" autocapitalize="none" autocomplete="email" required="" id="id_email">
-        </p>
-        <p>
-            <label for="id_username">Nombre de usuario:</label>
-            <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
-            <span class="helptext">Caracteres máximos: 16. Solo están permitidos las letras y los dígitos.</span>
-        </p>
-        <p>
-            <label for="id_password1">Contraseña:</label>
-            <input type="password" name="password1" minlength= "8" maxlength="16" pattern="[a-zA-Z0-9]+" autocomplete="new-password" required="" id="id_password1">
-            <span class="helptext"></span>
-        </p>
-        <ul>
-            <li>
-                Tu contraseña debe tener 8 caracteres como mínimo (y como máximo 16).
-                <p></p>
-            </li>
-            <li>
-                Tu contraseña debe contener una minúscula, una mayúscula y un número.
-            </li>
-        </ul>
-      <p></p>
-      <p>
-        <label for="id_password2">Confirmación de contraseña:</label>
-        <input type="password" name="password2" minlength= "8" maxlength="16" pattern="[a-zA-Z0-9]+" autocomplete="new-password" required="" id="id_password2">
-        <span class="helptext">Verifica tu contraseña.</span>    
-      </p>
-      <p>
-        <button type="submit">Submit</button>
-      </p>
-    </form>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4 mt-4"> <!-- Columna de amplio 4, centrado al espacio cuatro, con un margen de la navbar de 4-->
+                <form method="POST" class="card card-body"> <!-- Formulario SignupForm-->
+                    {% csrf_token %} <!-- Validación CSRF de Django (Medida de seguridad)-->
+                    <h1 class="text-center"> ----o SIGN UP o----</h1>
+                    {{error}} <!-- Error definido en 'views.py'-->
+                    <div class="mb-3 form-group">
+                        <label for="id_email">Email:⠀⠀⠀⠀</label>
+                        <input type="email" name="email" maxlength="50" autocapitalize="none" autocomplete="email" required="" id="id_email">
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="id_username">Nombre de usuario:</label>
+                        <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+                        <p></p>
+                    <ul>
+                        <li>
+                            Caracteres máximos: 16.
+                        </li>
+                        <li>
+                            Solo están permitidos las letras y los dígitos.
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="id_password1">Contraseña:⠀</label>
+                        <input type="password" name="password1" minlength= "8" maxlength="16" pattern="[a-zA-Z0-9]+" autocomplete="new-password" required="" id="id_password1">
+                    </div>
+                    <ul>
+                        <li>
+                            Tu contraseña debe tener 8 caracteres como mínimo (y como máximo 16).
+                        </li>
+                        <li>
+                            Tu contraseña debe contener una minúscula, una mayúscula y un número.
+                        </li>
+                    </ul>
+                  <div class="mb-3 form-group">
+                    <label for="id_password2">Confirmación de contraseña:</label>
+                    <input type="password" name="password2" minlength= "8" maxlength="16" pattern="[a-zA-Z0-9]+" autocomplete="new-password" required="" id="id_password2">
+                  </div>
+                    <button class="btn btn-primary">
+                        Sign Up
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
 {% endblock %}
