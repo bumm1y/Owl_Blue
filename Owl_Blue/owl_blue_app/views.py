@@ -32,7 +32,7 @@ def signup(request):
                 return render(request, 'owl_blue_app/signup.html', {
             'form': form, 'error': '[!] El usuario o correo ingresado ya existe'})
         return render(request, 'owl_blue_app/signup.html', {
-            'form': form, 'error': '[!] Las contraseñas no coinciden'})
+            'form': form, 'error': '[!] Las contraseñas no coinciden.'})
 
 
 # Login
