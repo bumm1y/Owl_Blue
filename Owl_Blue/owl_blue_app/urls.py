@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, signup, signin, signout, acts
+from .views import index, signup, signin, signout, acts, myaccount
 
 ''' Rutas para las distintas vistas '''
 urlpatterns = [
@@ -8,4 +8,5 @@ urlpatterns = [
     path('login/', signin, name='lognin'),
     path('logout/', signout, name='logout'),
     path('acts/', acts, name='acts'),
+    path('myaccount/', myaccount, name='myaccount')
 ]

@@ -64,3 +64,9 @@ def acts(request):
     acts = Categoria.objects.all()
     return render(request, 'owl_blue_app/acts.html', {
         'acts': acts})
+
+
+""" Vista cuenta """
+@login_required
+def myaccount(request):
+    return render(request, 'owl_blue_app/myaccount.html')

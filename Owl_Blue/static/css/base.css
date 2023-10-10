@@ -2,3 +2,12 @@
     margin-right: 15px !important;
     margin-left: 5px !important;
 }
+
+.custom-card {
+    width: 40 !important;
+    height: 40 !important;
+}
+
+.black {
+    background: black !important;
+}
