@@ -2,32 +2,38 @@
 {% load static %}
 
 {% block header %}
+
     <title>Owl Blue | Home</title>
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <script src="{% static 'js/index.js' %}"></script> <!-- Mensaje de confirmación en js-->
+
 {% endblock %}
 
 {% block content %}
+
     <!-- Mensaje de confirmación (post-registro) -->
     {% if mensaje_confirmacion %}
     <div id="check">
+
         {{ mensaje_confirmacion }}
+
     </div>
+
     {% endif %}
+
     <main class="container-fluid">
+
         <div class="col-md-5 mt-4 card card-body">
-            <h1>Primera página que ayudará al aprendizaje del lenguaje de señas</h1> 
+            <h1>OWL BLUE es la primera pagina que ayudara al aprendizaje del leguaje de señas </h1> 
         </div>
         
     </main class="container-fluid">
-        <div>
-            <h2>voy a pobrobar una imagen de prueba</h2>
-        </div>
 
-        <img src="{% static 'img/manos sin fondo.png' %}" width="400"/>
+        
+    <h2 id="PRUEBAA">voy a pobrobar una imagen de prueba</h2>
 
-    <main>
+    <img src="{% static 'img/manos sin fondo.png' %}" width="400"/>
 
+    
 
-    </main>
 {% endblock %}
