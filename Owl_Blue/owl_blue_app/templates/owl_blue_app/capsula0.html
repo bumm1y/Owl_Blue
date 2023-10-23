@@ -1,0 +1,31 @@
+{% extends 'owl_blue_app/base.html' %}
+{% load static %}
+
+{% block header %}
+    <title>Owl Blue | Familia</title>
+    <link rel="stylesheet" href="{% static 'css/capsula0.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-12 offset-md-0 mt-4">
+                <form method="POST" class="card card-body">
+                    {% csrf_token %}
+                    <h1 class="text-center">{{ explicacion.categoria }}: Cápsula {{ num_capsula }}</h1>
+                    {% if explicacion.vid %}
+                    <p></p>
+                    <h2>Video:</h2>
+                    <video src="{{ explicacion.vid }}" controls></video>
+                    {% endif %}
+                    {% if explicacion.img %}
+                    <p></p>
+                    <h2>Imagen de apoyo:</h2>
+                    <img src="{{ explicacion.img }}" alt="{{ explicacion.categoria }}"></img>
+                    {% endif %}
+                <button class="btn btn-primary">Continuar</button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

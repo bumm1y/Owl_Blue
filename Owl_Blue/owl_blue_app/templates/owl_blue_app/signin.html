@@ -12,8 +12,12 @@
         <div class="col-md-4 offset-md-4 mt-4">
             <form method="POST" class="card card-body"> <!-- Formulario LoginForm-->
                 <h1 class="text-center">-----o LOG IN o-----</h1>
-                {{error}} <!-- Muestra un error definido en 'views.py' si se envían datos erróneos-->
                 {% csrf_token %} <!-- Validación CSRF de Django (Medida de seguridad)-->
+                {% if error %}
+                <div class="alert alert-danger">
+                    <strong>Error: </strong> {{error}}
+                </div>
+                {% endif %}
                 <div class="mb-3 form-group">
                     <label for="id_username">Nombre de usuario:</label>
                     <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
@@ -30,3 +34,4 @@
 </main>
 
 {% endblock %}
+

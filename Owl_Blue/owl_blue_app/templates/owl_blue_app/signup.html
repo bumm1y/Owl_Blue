@@ -9,43 +9,47 @@
     <main class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4 mt-4"> <!-- Columna de amplio 4, centrado al espacio cuatro, con un margen de la navbar de 4-->
+                {% if error %}
+                <div class="alert alert-danger">
+                    <strong>Error: </strong> {{error}}
+                </div>
+                {% endif %}
                 <form method="POST" class="card card-body"> <!-- Formulario SignupForm-->
                     {% csrf_token %} <!-- Validación CSRF de Django (Medida de seguridad)-->
                     <h1 class="text-center"> ----o SIGN UP o----</h1>
-                    {{error}} <!-- Error definido en 'views.py'-->
+                    <p></p>
+                    <p></p>
+                    <p></p>
                     <div class="mb-3 form-group">
                         <label for="id_email">Email:⠀⠀⠀⠀</label>
                         <input type="email" name="email" maxlength="50" autocapitalize="none" autocomplete="email" required="" id="id_email">
                     </div>
+                    <div id="email-validation" style="display: none"> <!-- Mensaje de error en validaciones -->
+                        <script src="{% static 'js/signup.js' %}"></script>
+                    </div>
                     <div class="mb-3 form-group">
                         <label for="id_username">Nombre de usuario:</label>
-                        <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+                        <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" required="" id="id_username">
                         <p></p>
-                    <ul>
-                        <li>
-                            Caracteres máximos: 16.
-                        </li>
-                        <li>
-                            Solo están permitidos las letras y los dígitos.
-                        </li>
-                    </ul>
+                    <div id="username-validation" style="display: none" class="alert alert-danger"> <!-- Mensaje de error en validaciones -->
+                        <script src="{% static 'js/signup.js' %}"></script>
+                    </div>
                     </div>
                     <div class="mb-3 form-group">
                         <label for="id_password1">Contraseña:⠀</label>
                         <input type="password" name="password1" minlength= "8" maxlength="16" pattern="[a-zA-Z0-9]+" autocomplete="new-password" required="" id="id_password1">
                     </div>
-                    <ul>
-                        <li>
-                            Tu contraseña debe tener 8 caracteres como mínimo (y como máximo 16).
-                        </li>
-                        <li>
-                            Tu contraseña debe contener una minúscula, una mayúscula y un número.
-                        </li>
-                    </ul>
-                  <div class="mb-3 form-group">
-                    <label for="id_password2">Confirmación de contraseña:</label>
-                    <input type="password" name="password2" minlength= "8" maxlength="16" pattern="[a-zA-Z0-9]+" autocomplete="new-password" required="" id="id_password2">
-                  </div>
+                    <div id="password-validation" style="display: none" class="alert alert-danger"> <!-- Mensaje de error en validaciones -->
+                        <script src="{% static 'js/signup.js' %}"></script>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="id_password2">Confirmación de contraseña:</label>
+                        <input type="password" name="password2" minlength= "8" maxlength="16" pattern="[a-zA-Z0-9]+" autocomplete="new-password" required="" id="id_password2">
+                    </div>
+                    <div id="confirm-validation" style="display: none" class="alert alert-danger">
+                        <script src="{% static 'js/signup.js' %}"></script>
+                    </div>
+                    <p></p>
                     <button class="btn btn-primary">
                         Sign Up
                     </button>
@@ -56,3 +60,5 @@
 </body>
 </html>
 {% endblock %}
+
+
