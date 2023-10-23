@@ -2,28 +2,38 @@
 {% load static %}
 
 {% block header %}
+
     <title>Owl Blue | Home</title>
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <script src="{% static 'js/index.js' %}"></script> <!-- Mensaje de confirmación en js-->
+
 {% endblock %}
 
 {% block content %}
+
     <!-- Mensaje de confirmación (post-registro) -->
     {% if mensaje_confirmacion %}
-    <div id="bienvenida">
-        {{ mensaje_confirmacion }}
-    </div>
-    {% endif %}
-    <main class="container-fluid">
-        <div class="col-md-5 mt-4 card card-body">
-            <h1>Lorem</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean suscipit ligula sit amet ex lobortis, at fermentum sapien mattis. Phasellus ut lobortis sapien. Aenean feugiat fringilla mi. Aenean ultricies ullamcorper nulla, non ornare lectus sodales vel. Donec eget turpis in nulla ultricies ultricies. Proin ligula tortor, bibendum eget sapien sit amet, euismod aliquam ligula. Vivamus vel leo euismod, semper nibh in, sollicitudin ex. Suspendisse iaculis volutpat tellus sed viverra. Aenean congue eros quis nunc dictum consectetur. Vestibulum non ornare sem, id ornare tellus. Mauris metus mi, sollicitudin sit amet sollicitudin in, rutrum at massa. Donec commodo ut metus eget iaculis.</p>
-        </div>
-        <div class="col-md-2 offset-md-6 mt-4 card card-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean suscipit ligula sit amet ex lobortis, at fermentum sapien mattis. Phasellus ut lobortis sapien. Aenean feugiat fringilla mi. Aenean ultricies ullamcorper nulla, non ornare lectus sodales vel. Donec eget turpis in nulla ultricies ultricies. Proin ligula tortor, bibendum eget sapien sit amet, euismod aliquam ligula. Vivamus vel leo euismod, semper nibh in, sollicitudin ex. Suspendisse iaculis volutpat tellus sed viverra. Aenean congue eros quis nunc dictum consectetur. Vestibulum non ornare sem, id ornare tellus. Mauris metus mi, sollicitudin sit amet sollicitudin in, rutrum at massa. Donec commodo ut metus eget iaculis.</p>
-        </div>
-    </main>
+    <div id="check">
 
+        {{ mensaje_confirmacion }}
+
+    </div>
+
+    {% endif %}
+
+    <main class="container-fluid">
+
+        <div class="col-md-5 mt-4 card card-body">
+            <h1>OWL BLUE es la primera pagina que ayudara al aprendizaje del leguaje de señas </h1> 
+        </div>
+        
+    </main class="container-fluid">
+
+        
+    <h2 id="PRUEBAA">voy a pobrobar una imagen de prueba</h2>
+
+    <img src="{% static 'img/manos sin fondo.png' %}" width="400"/>
+
+    
 
 {% endblock %}
-
