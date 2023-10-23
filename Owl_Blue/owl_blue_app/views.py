@@ -6,6 +6,11 @@ from django.db import IntegrityError
 from .models import Categoria
 from django.contrib.auth.decorators import login_required
 
+''' Cápsula 0 '''
+def capsula0(request):
+    return render(request, 'owl_blue_app/capsula0.html')
+
+
 # Página home
 def index(request):
     mensaje_confirmacion = request.session.pop('mensaje_confirmacion', None) # <-- Verifica el mensaje de confirmación
@@ -19,21 +24,17 @@ def signup(request):
         return render(request, 'owl_blue_app/signup.html', {'form' : form}) # <-- 'Carga' la página signup
     else:
         form = SignupForm()
-        if request.POST["password1"] == request.POST['password2']: # <-- Autenticación de contraseñas
-            try:
-                user = User.objects.create_user(email=request.POST['email'],
-                username=request.POST['username'], password=request.POST['password1'])
-                user.save() # <-- Guardado en BBDD
-                login(request, user)
-                mensaje_confirmacion = f"¡Usuario creado exitosamente!"
-                request.session['mensaje_confirmacion'] = mensaje_confirmacion
-                return redirect('home')
-            except IntegrityError:
-                return render(request, 'owl_blue_app/signup.html', {
-            'form': form, 'error': '[!] El usuario o correo ingresado ya existe'})
-        return render(request, 'owl_blue_app/signup.html', {
-            'form': form, 'error': '[!] Las contraseñas no coinciden.'})
-
+        try:
+            user = User.objects.create_user(email=request.POST['email'],
+            username=request.POST['username'], password=request.POST['password1'])
+            user.save() # <-- Guardado en BBDD
+            login(request, user)
+            mensaje_confirmacion = f"¡Usuario creado exitosamente!"
+            request.session['mensaje_confirmacion'] = mensaje_confirmacion
+            return redirect('home')
+        except IntegrityError:
+            return render(request, 'owl_blue_app/signup.html', {
+        'form': form, 'error': 'El usuario o correo ingresado ya existe.'})
 
 # Login
 def signin(request):
@@ -48,8 +49,10 @@ def signin(request):
         ])
         if user is None:
             return render(request, 'owl_blue_app/signin.html', {
-                'form': form, 'error': '[!] El usuario o la contraseña son incorrectos.'})
+                'form': form, 'error': 'El usuario o la contraseña son incorrectos.'})
         else:
+            mensaje_confirmacion = f"Bienvenido de vuelta!"
+            request.session['mensaje_confirmacion'] = mensaje_confirmacion
             login(request, user)
             return redirect('home')
 # Logout
@@ -65,6 +68,29 @@ def acts(request):
     return render(request, 'owl_blue_app/acts.html', {
         'acts': acts})
 
+@login_required
+def abc(request):
+    return render(request, 'owl_blue_app/abc.html', {
+        'abc': abc
+    })
+
+@login_required
+def preguntas(request):
+    return render(request, 'owl_blue_app/preguntas.html', {
+        'preguntas': preguntas
+    })
+
+@login_required
+def emociones(request):
+    return render(request, 'owl_blue_app/emociones.html', {
+        'emociones': emociones
+    })
+
+@login_required
+def familia(request):
+    return render(request, 'owl_blue_app/familia.html', {
+        'familia': familia
+    })
 
 """ Vista cuenta """
 @login_required

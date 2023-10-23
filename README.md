@@ -19,3 +19,10 @@
 --> Windows
 
 --> Archivo ejecutable
+
+° Requisitos básicos
+
+Django
+PostgreSQL
+Python-Decouple
+.env 

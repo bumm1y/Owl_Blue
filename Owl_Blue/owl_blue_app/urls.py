@@ -1,5 +1,5 @@
-from django.urls import path
-from .views import index, signup, signin, signout, acts, myaccount
+from django.urls import path, re_path
+from .views import index, signup, signin, signout, acts, myaccount, abc, preguntas, emociones, familia, capsula_base
 
 ''' Rutas para las distintas vistas '''
 urlpatterns = [
@@ -8,5 +8,9 @@ urlpatterns = [
     path('login/', signin, name='lognin'),
     path('logout/', signout, name='logout'),
     path('acts/', acts, name='acts'),
+    path('acts/abecedario', abc, name='abc'),
+    path('acts/preguntas', preguntas, name='preguntas'),
+    path('acts/emociones', emociones, name='emociones'),
+    path('acts/familia', familia, name='familia'),
     path('myaccount/', myaccount, name='myaccount')
 ]

@@ -1,12 +1,19 @@
 // Mensaje de bienvenida
-document.addEventListener('DOMContentLoaded', function () {
-    // Obtiene el mensaje de confirmación
-    var mensajeConfirmacion = document.getElementById('check');
+document.addEventListener('DOMContentLoaded', function () { // Verificador de la carga del html
+    
+    function successAlert(contenedor, mensaje) {
+        contenedor.classList.add("alert", "alert-success");
+        contenedor.innerHTML=mensaje;
+        contenedor.style.display="block";
+        setTimeout(function() {
+            contenedor.classList.remove("alert", "alert-success");
+            contenedor.style.display= "none";
+            contenedor.innerHTML="";
+        }, 2000)
+    }
+    var mensajeConfirmacion = document.getElementById('bienvenida');
     // Verifica si el mensaje de confirmación existe
     if (mensajeConfirmacion) {
-        mensajeConfirmacion.style.display = 'block';
-        setTimeout(function () {
-            mensajeConfirmacion.style.display = 'none';
-        }, 3000); // Oculta el mensaje (3 sec después)
+        successAlert(mensajeConfirmacion, mensajeConfirmacion.innerHTML);
     }
 });

@@ -1,7 +1,17 @@
 from django.db import models
 from django.core import validators
 from django.core.validators import MinLengthValidator, MaxLengthValidator
+from django.core.exceptions import ValidationError
 
+''' Funciones de formularios '''
+def validation_passwd(value):
+    if not any(char.islower() for char in value): #Ciclo for para verificar si hay minúsculas
+        raise ValidationError('La contraseña debe incluir una minúscula')
+    if not any(char.isupper() for char in value): #Ciclo para verificar si hay mayúsculas
+        raise ValidationError('La contraseña debe incluir una mayúscula')
+    if not any(char.isdigit() for char in value): #Ciclo para ver si hay dígitos
+        raise ValidationError('La contraseña debe incluir un dígito')
+    
 ''' Tablas de contenido '''
 
 class Abecedario(models.Model):
@@ -42,13 +52,27 @@ class Actividades(models.Model):
 
 ''' Tabla de usuarios registrados '''
 
+class UsuariosForm(models.Model):
+    username = models.CharField(max_length=16, unique=True, validators=[validators.RegexValidator(
+        regex='^[a-zA-Z0-9]+$',
+    )])
+    passwd = models.CharField(
+        max_length=16,
+        validators=[MinLengthValidator(8), MaxLengthValidator(16), validators.RegexValidator(regex='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,16}$')]
+    )
+    email = models.EmailField(unique=True)
+
+
+    def __str__(self):
+        return f"{self.username}, {self.email}, {self.passwd}"
+    
 class Usuarios(models.Model):
     username = models.CharField(max_length=16, unique=True, validators=[validators.RegexValidator(
         regex='^[a-zA-Z0-9]+$',
     )])
-    email = models.EmailField(unique=True)
     passwd = models.CharField(max_length=16, validators=[MinLengthValidator(8), MaxLengthValidator(16)])
+    email = models.EmailField(unique=True)
+
 
     def __str__(self):
         return f"{self.username}, {self.email}, {self.passwd}"
-

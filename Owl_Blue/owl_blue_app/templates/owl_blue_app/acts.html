@@ -7,11 +7,13 @@
 {% endblock %}
 {% block content %}
     <h1> ACTIVIDADES </h1>
-    <ul>
-        {% for act in acts %} <!--Imprime en un ciclo 'for' cada categoria en la clase 'Categoria'-->
-        <li>
-            {{act.categoria}}
-        </li>
-        {% endfor %}
-    </ul>
+    <nav>
+        <ul>
+            {% for act in acts %} <!--Imprime en un ciclo 'for' cada categoria en la clase 'Categoria'-->
+            <li class="nav-item">
+                <a class="nav-link" href="/acts/{{ act.categoria|lower}}">{{act.categoria}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
 {% endblock %}
