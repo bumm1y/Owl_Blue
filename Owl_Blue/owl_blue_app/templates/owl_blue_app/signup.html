@@ -9,19 +9,22 @@
     <main class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4 mt-4"> <!-- Columna de amplio 4, centrado al espacio cuatro, con un margen de la navbar de 4-->
-                {% if error %}
-                <div class="alert alert-danger">
-                    <strong>Error: </strong> {{error}}
-                </div>
-                {% endif %}
                 <form method="POST" class="card card-body"> <!-- Formulario SignupForm-->
                     {% csrf_token %} <!-- Validación CSRF de Django (Medida de seguridad)-->
-                    <h1 class="text-center"> ----o SIGN UP o----</h1>
+                    <div style="text-align: center;">
+                        <img src="{% static 'img/owlblue_icon.png' %}" width="50"/>
+                    </div>
                     <p></p>
+                    <h1 class="text-center" style="text-decoration: underline;">Sign Up</h1>
+                    {% if error %}
+                    <div class="alert alert-danger">
+                        <strong>Error: </strong> {{error}}
+                    </div>
+                    {% else %}
                     <p></p>
-                    <p></p>
+                    {% endif %}
                     <div class="mb-3 form-group">
-                        <label for="id_email">Email:⠀⠀⠀⠀</label>
+                        <label for="id_email">Email:⠀⠀⠀⠀⠀⠀</label>
                         <input type="email" name="email" maxlength="50" autocapitalize="none" autocomplete="email" required="" id="id_email">
                     </div>
                     <div id="email-validation" style="display: none"> <!-- Mensaje de error en validaciones -->
@@ -30,13 +33,12 @@
                     <div class="mb-3 form-group">
                         <label for="id_username">Nombre de usuario:</label>
                         <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" required="" id="id_username">
-                        <p></p>
                     <div id="username-validation" style="display: none" class="alert alert-danger"> <!-- Mensaje de error en validaciones -->
                         <script src="{% static 'js/signup.js' %}"></script>
                     </div>
                     </div>
                     <div class="mb-3 form-group">
-                        <label for="id_password1">Contraseña:⠀</label>
+                        <label for="id_password1">Contraseña:⠀⠀⠀⠀⠀</label>
                         <input type="password" name="password1" minlength= "8" maxlength="16" pattern="[a-zA-Z0-9]+" autocomplete="new-password" required="" id="id_password1">
                     </div>
                     <div id="password-validation" style="display: none" class="alert alert-danger"> <!-- Mensaje de error en validaciones -->
@@ -50,6 +52,8 @@
                         <script src="{% static 'js/signup.js' %}"></script>
                     </div>
                     <p></p>
+                    <p></p>
+                    <p class="text-center">¿Ya tienes una cuenta? <a class="nav-link" href="/login" style="color: #007BFF; text-decoration: underline;">Log in</a></p>
                     <button class="btn btn-primary">
                         Sign Up
                     </button>

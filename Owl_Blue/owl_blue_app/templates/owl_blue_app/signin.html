@@ -11,22 +11,29 @@
     <div class="row">
         <div class="col-md-4 offset-md-4 mt-4">
             <form method="POST" class="card card-body"> <!-- Formulario LoginForm-->
-                <h1 class="text-center">-----o LOG IN o-----</h1>
+                <div style="text-align: center;">
+                    <img src="{% static 'img/owlblue_icon.png' %}" width="50"/>
+                </div>
+                <p></p>
+                <h1 class="text-center" style="text-decoration: underline;">Log In</h1>
                 {% csrf_token %} <!-- Validación CSRF de Django (Medida de seguridad)-->
                 {% if error %}
                 <div class="alert alert-danger">
                     <strong>Error: </strong> {{error}}
                 </div>
+                {% else %}
+                <p></p>
                 {% endif %}
                 <div class="mb-3 form-group">
                     <label for="id_username">Nombre de usuario:</label>
                     <input type="text" name="username" maxlength="16" pattern="[a-zA-Z0-9]+" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
                 </div>
                 <div class="mb-3 form-group">
-                    <label for="id_password">Contraseña:⠀</label>
+                    <label for="id_password">Contraseña:⠀⠀⠀⠀⠀</label>
                     <input type="password" name="password" minlength= "8" maxlength="16" autocomplete="password" required="" id="id_password">
                 </div>
               <p></p>
+              <p class="text-center">¿No tienes una cuenta? <a class="nav-link" href="/signup" style="color: #007BFF; text-decoration: underline;">Sign up</a></p>
               <button class="btn btn-primary">Log In</button>
             </form>
         </div>

@@ -1,7 +1,9 @@
 body {
     background: rgb(128, 203, 234);
     color: black;
+    font-family: 'Cambo', sans-serif;
 }
+
 
 /* Estilo para los formularios y etiquetas */
 .form-group {
