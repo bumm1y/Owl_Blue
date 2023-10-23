@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from .views import index, signup, signin, signout, acts, myaccount, abc, preguntas, emociones, familia, capsula_base
+from .views import index, signup, signin, signout, acts, myaccount, abc, preguntas, emociones, familia, capsula0
 
 ''' Rutas para las distintas vistas '''
 urlpatterns = [
