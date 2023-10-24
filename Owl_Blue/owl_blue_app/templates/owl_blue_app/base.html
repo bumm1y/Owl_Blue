@@ -17,7 +17,7 @@
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                 <img src="{% static 'img/owlblue_icon.png' %}" alt="Logo" width="40" height="40" class="d-inline-block align-text-top custom-logo" >
-                <a class="navbar-brand" href="#">OWL BLUE</a>
+                <a class="navbar-brand" href="#">Owl Blue</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,8 +33,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/logout">Cerrar sesión</a>
                             </li>
-                            <li class="nav-item card card-body black">
-                                <a class="nav-link" href="/myaccount"><img src="{% static 'img/defaultuser.png' %}" alt="Logo" width="40" height="40" class="d-inline-block align-text-top custom-logo"></a>
+                            <li class="nav-item">
+                                <div class="black custom-card">
+                                    <a class="nav-link" href="/myaccount"><img src="{% static 'img/defaultuser.png' %}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top custom-logo"></a>
+                                </div>
                             </li>
                         {% else %}
                             <li class="nav-item">    
