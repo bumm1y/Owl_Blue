@@ -7,6 +7,7 @@ body {
     margin-right: 30px !important;
 }
 
+<<<<<<< HEAD
 .custom-margin-left {
     margin-left: 30px !important;
 }
@@ -20,4 +21,7 @@ body {
     border-top: 1px solid !important;
     border-left: 1px solid !important;
     border-right: 1px solid !important;
+=======
+    color: blue;
+>>>>>>> 45603fd2e40c89f95a90bd1981f18aed1c092641
 }
