@@ -6,49 +6,79 @@
     <script src="{% static 'js/index.js' %}"></script> <!-- Mensaje de confirmación en js-->
 {% endblock %}
 {% block content %}
-    <!-- Mensaje de confirmación (post-registro) -->
-    {% if mensaje_confirmacion %}
-    <div id="bienvenida">
-        {{ mensaje_confirmacion }}
+   <!-- Mensaje de confirmación (post-registro) -->
+{% if mensaje_confirmacion %}
+<div id="bienvenida">
+    {{ mensaje_confirmacion }}
+</div>
+{% endif %}
+
+<main class="container-fluid">
+    <div class="row">
+        <div class="col-md-5 mt-4 card card-body custom-margin-right custom-margin-left">
+            <p style="font-size: 15px;">
+                Bienvenido a "Owl Blue". Se trata de un proyecto estudiantil que busca aproximar a los usuarios al lenguaje de señas chileno, empezando por lo fundamental como lo es el abecedario y tocando uno que otro tópico, dentro de las posibilidades.
+                <br><br>
+                <strong>¿Por qué no te aventuras a probar esta experiencia? ¡Seguro que no te arrepentirás!</strong>
+                <br><br>
+                Y también, como sabemos lo aplicado que eres, te dejamos también unos enlaces para visualizar los dos volúmenes sobre el diccionario que ha entregado el MINEDUC en su propia página web.
+                <br><br>
+                <strong>¡A seguir aprendiendo y disfrutar!</strong>
+                <br><br>
+                <a href="https://especial.mineduc.cl/wp-content/uploads/sites/31/2018/07/Diccionario_LSCh_A-H.pdf">Diccionario desde la A-H. Vol. 1</a>
+                <br>
+                <a href="https://especial.mineduc.cl/wp-content/uploads/sites/31/2018/07/Diccionario_LSCh_I-Z.pdf">Diccionario desde la I-Z. Vol. 2</a>
+            </p>
+        </div>
+
+        <div class="col-md-5 mt-4 card card-body custom-margin-right">
+            <p>
+                <h3 style="text-decoration: underline;">Tópicos disponibles:</h3>
+                <br>
+                <p style="font-size: 18px;">
+                    ° Abecedario: ¡Habla tus primeras palabras con el alfabeto!
+                    <br>° Preguntas: ¿Quieres descubrir cómo preguntar en lengua de señas?
+                    <br>° Emociones: ¡Exprésate con lengua de señas!
+                    <br>° Familia: ¡Contagia el lenguaje a tus familiares!
+                    <br>° Casa: ¡Describe tu casa de manera única!
+                    <br>° Escuela: ¡Muestra tu desconcierto de los contenidos en lengua de señas!
+                </p>
+            </p>
+        </div>
     </div>
-    {% endif %}
-    <main class="container-fluid">
+
+    <div class="container-fluid info-contacto mt-0 mb-0 pt-0 pb-0">
         <div class="row">
-            <div class="col-md-5 mt-4 card card-body custom-margin-right custom-margin-left">
-                <p style="font-size: 15px;">Bienvenido a "Owl Blue". Se trata de un proyecto estudiantil que busca aproximar a los usuarios al lenguaje de señas chileno, empezando por lo fundamental como lo es el abecedario y tocando uno que otro tópico, dentro de las posibilidades. <br><br><strong>¿Por qué no te aventuras a probar esta experiencia? ¡Seguro que no te arrepentirás!</strong><br><br>Y también, como sabemos lo aplicado que eres, te dejamos también unos enlaces para visualizar los dos volúmenes sobre el diccionario que ha entregado el MINEDUC en su propia página web. <br><br><strong>¡A seguir aprendiendo y disfrutar!</strong><br><br><a href="https://especial.mineduc.cl/wp-content/uploads/sites/31/2018/07/Diccionario_LSCh_A-H.pdf">Diccionario desde la A-H. Vol. 1</a><br><a href="https://especial.mineduc.cl/wp-content/uploads/sites/31/2018/07/Diccionario_LSCh_I-Z.pdf">Diccionario desde la I-Z. Vol. 2</a></h6></p> 
+            <div class="col-md-3">
+                <img src="{% static 'img/usm_logo.png' %}" alt="Logo USM" width="100">
             </div>
-            <div class="col-md-5 mt-4 card card-body custom-margin-right">
-                    <p><h3 style="text-decoration: underline;">Tópicos disponibles:</h3><br><p style="font-size: 18px;">° Abecedario: ¡Habla tus primeras palabras con el alfabeto!<br>° Preguntas: ¿Quieres descubrir como preguntar en lengua de señas?<br>° Emociones: ¡Exprésate con lengua de señas!<br>° Familia: ¡Contagia el lenguaje a tus familiares!<br>° Casa: ¡Describe tu casa de manera única!<br>° Escuela: ¡Muestra tu desconcierto de los contenidos en lengua de señas!</p></p>
-            </div>
-        </div>
-        <div class="container-fluid info-contacto mt-0 mb-0 pt-0 pb-0">
-            <div class="row">
-                <div class="col-md-3">
-                    <img src="{% static 'img/usm_logo.png' %}" alt="Logo USM" width="100">
-                </div>
-                <div class="col-md-9">
-                    <h4>Contacto de los creadores:</h4>
-                    <div class="d-flex flex-row">
-                        <div style="margin-right: 20px;">
-                            <strong>Benjamín Echeverría:</strong><br>
-                            <p>becheverria@usm.cl</p>
-                        </div>
-                        <div style="margin-right: 20px;">
-                            <strong>Matías Gómez:</strong><br>
-                            <p>mgomez@usm.cl</p>
-                        </div>
-                        <div style="margin-right: 20px;">
-                            <strong>Daniel Lagos:</strong><br>
-                            <p>dlagos@usm.cl</p>
-                        </div>
-                        <div style="margin-right: 20px;">
-                            <strong>Matías Riquelme:</strong><br>
-                            <p>mriquelme@usm.cl</p>
-                        </div>
+            <div class="col-md-9">
+                <h4>Contacto de los creadores:</h4>
+                <div class="d-flex flex-row">
+                    <div style="margin-right: 20px;">
+                        <strong>Benjamín Echeverría:</strong>
+                        <br>
+                        <p>becheverria@usm.cl</p>
                     </div>
-                </div>    
+                    <div style="margin-right: 20px;">
+                        <strong>Matías Gómez:</strong>
+                        <br>
+                        <p>mgomez@usm.cl</p>
+                    </div>
+                    <div style="margin-right: 20px;">
+                        <strong>Daniel Lagos:</strong>
+                        <br>
+                        <p>dlagos@usm.cl</p>
+                    </div>
+                    <div style="margin-right: 20px;">
+                        <strong>Matías Riquelme:</strong>
+                        <br>
+                        <p>mriquelme@usm.cl</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</main>
 {% endblock %}
 
