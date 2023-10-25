@@ -11,6 +11,9 @@ def capsula0(request):
     return render(request, 'owl_blue_app/capsula0.html')
 
 
+''' Prueba lessons.html '''
+def lessons(request):
+    return render(request, 'owl_blue_app/lessons.html')
 # Página home
 def index(request):
     mensaje_confirmacion = request.session.pop('mensaje_confirmacion', None) # <-- Verifica el mensaje de confirmación
