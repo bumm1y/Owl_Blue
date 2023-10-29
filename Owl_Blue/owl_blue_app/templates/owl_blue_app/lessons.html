@@ -1,0 +1,22 @@
+{% extends 'owl_blue_app/base.html' %}
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" href="{% static 'css/lessons.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="contenedor">
+        <div class="encabezado">
+            <div class="categoria">
+                categoria
+            </div>
+            <div class="pregunta">
+                pregunta
+            </div>
+            <img src="{% static 'img/owlblue_icon.png' %}" width="200"/>
+        </div>
+        <div class="btn" id="btn1">Alternativa 1</div>
+        <div class="btn" id="btn2">Alternativa 2</div>
+        <div class="btn" id="btn3">Alternativa 3</div>
+        <div class="btn" id="btn4">Alternativa 4</div>
+    </div>
+{% endblock %}

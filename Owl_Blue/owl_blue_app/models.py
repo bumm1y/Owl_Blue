@@ -45,10 +45,15 @@ class Explicaciones(models.Model):
 
 class Actividades(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    videos = models.CharField(max_length=1000)
+    pregunta = models.CharField(max_length=100, default="")
+    videos = models.CharField(max_length=1000, unique=True)
+    respuesta = models.CharField(max_length=100, default="")
+    alternativa1 = models.CharField(max_length=100, unique=True, default="")
+    alternativa2 = models.CharField(max_length=100, unique=True, default="")
+    alternativa3 = models.CharField(max_length=100, unique=True, default="")
 
     def __str__(self):
-        return f"{self.categoria}, {self.videos}"
+        return f"{self.categoria}, {self.pregunta}, {self.videos}, {self.respuesta}, {self.alternativa1}, {self.alternativa2}, {self.alternativa3}"
 
 ''' Tabla de usuarios registrados '''
 

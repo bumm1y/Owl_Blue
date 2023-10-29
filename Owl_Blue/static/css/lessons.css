@@ -1,0 +1,49 @@
+*{
+    transition: all 0.6s;
+}
+
+
+body {
+    background: slategray;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.contenedor {
+    width: 98vw;
+    height: 97vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.encabezado {
+    background: white;
+    min-width: 300px;
+    width: 70%;
+}
+
+.categoria {
+    opacity: 0,3;
+    text-align: left;
+}
+
+.pregunta {
+    padding: 10;
+}
+
+.btn {
+    background: white;
+    width: 60%;
+    padding: 10px;
+    margin: 5px;
+}
+
+.btn:hover {
+    background: rgb(128, 203, 234);
+    cursor: pointer;
+    transform: scale(1.05);
+
+}
