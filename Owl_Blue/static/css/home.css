@@ -3,9 +3,7 @@ body {
     color: black;
 }
 
-.custom-margin-right {
-    margin-right: 30px !important;
-}
+
 
 .custom-margin-left {
     margin-left: 30px !important;
@@ -21,4 +19,56 @@ body {
     border-top: 1px solid !important;
     border-left: 1px solid !important;
     border-right: 1px solid !important;
+}
+
+.cuadro-con-bordes {
+
+    border: 2px solid black; /* Borde de 2 píxeles en color negro */
+    padding: 15px; /* Espaciado interno */
+    text-align: center; /* Alineación del texto al centro */
+    background-color: #cfe7eb; /* Color de fondo del cuadro */
+    width: 450px; /* Ancho del cuadro (ajusta según tus necesidades) */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.imagen_abc_topico {
+
+    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
+    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    
+}
+
+.imagen_preguntas_topico{
+
+    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
+    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    
+}
+
+.imagen_emociones_topico{
+
+    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
+    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    
+}
+
+.imagen_familia_topico{
+
+    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
+    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    
+}
+
+.imagen_casa_topico{
+
+    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
+    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    
+}
+
+.imagen_escuela_topico{
+
+    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
+    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    
 }
