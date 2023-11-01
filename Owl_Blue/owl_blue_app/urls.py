@@ -12,6 +12,7 @@ urlpatterns = [
     path('acts/preguntas', preguntas, name='preguntas'),
     path('acts/emociones', emociones, name='emociones'),
     path('acts/familia', familia, name='familia'),
+    path('acts/<str:categoria_elegida>/capsula0/', capsula0, name='capsula0'),
     path('myaccount/', myaccount, name='myaccount'),
-    path('lessons/', lessons, name='lessons') #PRUEBA
+    path('acts/<str:categoria_elegida>/capsula0/lessons/', lessons, name='lessons') #PRUEBA    
 ]

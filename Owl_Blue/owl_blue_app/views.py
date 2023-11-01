@@ -3,17 +3,21 @@ from .forms import SignupForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
-from .models import Categoria
+from .models import Categoria, Explicaciones, Actividades
 from django.contrib.auth.decorators import login_required
 
 ''' Cápsula 0 '''
-def capsula0(request):
-    return render(request, 'owl_blue_app/capsula0.html')
+def capsula0(request, categoria_elegida):
+    explicaciones = list(Explicaciones.objects.filter(categoria__categoria=categoria_elegida))
+    return render(request, 'owl_blue_app/capsula0.html', {'categoria_elegida': categoria_elegida, 'explicaciones': explicaciones})
 
 
 ''' Prueba lessons.html '''
-def lessons(request):
-    return render(request, 'owl_blue_app/lessons.html')
+def lessons(request, categoria_elegida):
+    categoria = categoria_elegida
+    actividades = list(Actividades.objects.filter(categoria__categoria=categoria))
+    return render(request, 'owl_blue_app/lessons.html', {'categoria': categoria, 'actividades': actividades})
+
 # Página home
 def index(request):
     mensaje_confirmacion = request.session.pop('mensaje_confirmacion', None) # <-- Verifica el mensaje de confirmación
@@ -73,9 +77,8 @@ def acts(request):
 
 @login_required
 def abc(request):
-    return render(request, 'owl_blue_app/abc.html', {
-        'abc': abc
-    })
+    categoria_elegida="Abecedario"
+    return render(request, 'owl_blue_app/abc.html', {'categoria_elegida': categoria_elegida})
 
 @login_required
 def preguntas(request):

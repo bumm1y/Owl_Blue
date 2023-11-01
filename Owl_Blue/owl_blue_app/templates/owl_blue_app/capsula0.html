@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block header %}
-    <title>Owl Blue | Familia</title>
+    <title>Owl Blue | {{ categoria_elegida }}</title>
     <link rel="stylesheet" href="{% static 'css/capsula0.css' %}">
 {% endblock %}
 
@@ -12,18 +12,29 @@
             <div class="col-md-12 offset-md-0 mt-4">
                 <form method="POST" class="card card-body">
                     {% csrf_token %}
-                    <h1 class="text-center">{{ explicacion.categoria }}: Cápsula {{ num_capsula }}</h1>
+                    <h1 class="text-center">{{ categoria_elegida }}: Cápsula 0</h1>
+                    {% for explicacion in explicaciones %}
                     {% if explicacion.vid %}
                     <p></p>
-                    <h2>Video:</h2>
-                    <video src="{{ explicacion.vid }}" controls></video>
+                    <h3 class="text-center">Video:</h3>
+                    <p></p>
+                    <div class="video">
+                        <iframe width="560" height="315" src="{{ explicacion.vid }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <p></p>
                     {% endif %}
                     {% if explicacion.img %}
+                    <h3 class="text-center">Imagen de apoyo:</h3>
                     <p></p>
-                    <h2>Imagen de apoyo:</h2>
-                    <img src="{{ explicacion.img }}" alt="{{ explicacion.categoria }}"></img>
+                    <div class="imagen">
+                        <img src="{{ explicacion.img }}" alt="{{ explicacion.categoria }}"></img>
+                    </div>
+                    <p></p>
                     {% endif %}
-                <button class="btn btn-primary">Continuar</button>
+                    {% endfor %}
+                <button class="btn boton">
+                    <a href="{% url 'lessons' categoria_elegida %}">Empezar la lección!</a>
+                </button>
             </form>
         </div>
     </div>

@@ -2,3 +2,24 @@ body {
     background: rgb(128, 203, 234);
     color: black;
 }
+
+
+.boton {
+    background-color: black;
+    width: auto !important;
+}
+
+.video {
+    text-align: center; 
+}
+
+
+.imagen {
+    text-align: center; 
+}
+
+.imagen img {
+    max-width: 100%; 
+    width: 60%; 
+    height: auto; 
+}

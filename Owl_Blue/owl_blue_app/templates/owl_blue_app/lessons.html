@@ -4,19 +4,23 @@
     <link rel="stylesheet" href="{% static 'css/lessons.css' %}">
 {% endblock %}
 {% block content %}
+    {% for actividad in actividades %}
     <div class="contenedor">
         <div class="encabezado">
             <div class="categoria">
-                categoria
+                {{ actividad.categoria }}
             </div>
             <div class="pregunta">
-                pregunta
+                {{ actividad.pregunta }}
             </div>
-            <img src="{% static 'img/owlblue_icon.png' %}" width="200"/>
+            <div class="video">
+                <iframe width="300" height="165" src="{{ actividad.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
         </div>
-        <div class="btn" id="btn1">Alternativa 1</div>
-        <div class="btn" id="btn2">Alternativa 2</div>
-        <div class="btn" id="btn3">Alternativa 3</div>
-        <div class="btn" id="btn4">Alternativa 4</div>
+        <div class="btn" id="btn1">{{ actividad.respuesta }}</div>
+        <div class="btn" id="btn2">{{ actividad.alternativa1 }}</div>
+        <div class="btn" id="btn3">{{ actividad.alternativa2 }}</div>
+        <div class="btn" id="btn4">{{ actividad.alternativa3 }}</div>
     </div>
+    {% endfor %}
 {% endblock %}
