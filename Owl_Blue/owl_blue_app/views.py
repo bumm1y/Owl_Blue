@@ -1,21 +1,34 @@
 from django.shortcuts import render, redirect
 from .forms import SignupForm, LoginForm
+from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .models import Categoria, Explicaciones, Actividades
 from django.contrib.auth.decorators import login_required
+from random import sample
+
+''' Respuestas JSON '''
+def lessonJSON(request, categoria_elegida):
+    actividades = request.session.get('actividades', [])
+    response = {'actividades': actividades}
+    return JsonResponse(response)
+
 
 ''' Cápsula 0 '''
+@login_required
 def capsula0(request, categoria_elegida):
     explicaciones = list(Explicaciones.objects.filter(categoria__categoria=categoria_elegida))
     return render(request, 'owl_blue_app/capsula0.html', {'categoria_elegida': categoria_elegida, 'explicaciones': explicaciones})
 
 
 ''' Prueba lessons.html '''
+@login_required
 def lessons(request, categoria_elegida):
+    seleccion = sample(range(1,11), 5)
     categoria = categoria_elegida
-    actividades = list(Actividades.objects.filter(categoria__categoria=categoria))
+    actividades = list(Actividades.objects.filter(categoria__categoria=categoria, num_pregunta__in=seleccion))
+    request.session['actividades'] = [{'categoria' : categoria, 'num_pregunta': actividad.num_pregunta, 'pregunta': actividad.pregunta, 'videos': actividad.videos, 'respuesta': actividad.respuesta, 'alternativa1': actividad.alternativa1, 'alternativa2': actividad.alternativa2, 'alternativa3': actividad.alternativa3} for actividad in actividades]
     return render(request, 'owl_blue_app/lessons.html', {'categoria': categoria, 'actividades': actividades})
 
 # Página home
@@ -82,21 +95,18 @@ def abc(request):
 
 @login_required
 def preguntas(request):
-    return render(request, 'owl_blue_app/preguntas.html', {
-        'preguntas': preguntas
-    })
+    categoria_elegida="Preguntas"
+    return render(request, 'owl_blue_app/preguntas.html', {'categoria_elegida': categoria_elegida})
 
 @login_required
 def emociones(request):
-    return render(request, 'owl_blue_app/emociones.html', {
-        'emociones': emociones
-    })
+    categoria_elegida="Emociones"
+    return render(request, 'owl_blue_app/preguntas.html', {'categoria_elegida': categoria_elegida})
 
 @login_required
 def familia(request):
-    return render(request, 'owl_blue_app/familia.html', {
-        'familia': familia
-    })
+    categoria_elegida="Familia"
+    return render(request, 'owl_blue_app/preguntas.html', {'categoria_elegida': categoria_elegida})
 
 """ Vista cuenta """
 @login_required

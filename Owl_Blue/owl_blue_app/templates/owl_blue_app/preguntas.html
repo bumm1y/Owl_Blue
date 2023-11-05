@@ -5,7 +5,33 @@
     <title>Owl Blue | Preguntas</title>
     <link rel="stylesheet" href="{% static 'css/preguntas.css' %}">
 {% endblock %}
-
 {% block content %}
-<h1>Hola Diablo</h1>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-12 offset-md-0 mt-4">
+                <form method="POST" class="card card-body">
+                    {% csrf_token %}
+                    <h1 class="text-center">Abecedario</h1>
+                    <p>
+                        <p>Bienvenido a la lección "Abecedario". En esta lección aprenderás las letras del abecedario en lenguaje de señas chilena y serás capaz de conjugar oraciones solamente utilizando letras individuales. Para superar esta lección, debes responder correctamente las 5 actividades que se te darán a continuación luego de ver un pequeño video explicativo y una imagen de apoyo. Si no contestas correctamente la primera vez, recuerda que siempre puedes volver a intentarlo. Mucha suerte!</p>
+                    </p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <button class="btn btn-primary">
+                        <a href="{% url 'capsula0' categoria_elegida %}">Ir a Capsula 0</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
 {% endblock %}
+
+
+

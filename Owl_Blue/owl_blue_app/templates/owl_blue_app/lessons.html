@@ -2,25 +2,27 @@
 {% load static %}
 {% block header %}
     <link rel="stylesheet" href="{% static 'css/lessons.css' %}">
+    <script src="{% static 'js/lessons.js' %}"></script> 
 {% endblock %}
 {% block content %}
-    {% for actividad in actividades %}
     <div class="contenedor">
         <div class="encabezado">
             <div class="categoria">
-                {{ actividad.categoria }}
+                {{ actividades.0.categoria }} 
             </div>
             <div class="pregunta">
-                {{ actividad.pregunta }}
+                {{ actividades.0.pregunta }}
             </div>
+            <p></p>
             <div class="video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/PWZA-0BGCfA?si=UrLzyN_6ubQ9wvD_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                {{ actividades.0.videos|safe }}  
             </div>
+            <p></p>
         </div>
-        <div class="btn" id="btn1">{{ actividad.respuesta }}</div>
-        <div class="btn" id="btn2">{{ actividad.alternativa1 }}</div>
-        <div class="btn" id="btn3">{{ actividad.alternativa2 }}</div>
-        <div class="btn" id="btn4">{{ actividad.alternativa3 }}</div>
+        <div class="btn" id="btn1">{{ actividades.0.respuesta }}</div>
+        <div class="btn" id="btn2">{{ actividades.0.alternativa1 }}</div>
+        <div class="btn" id="btn3">{{ actividades.0.alternativa2 }}</div>
+        <div class="btn" id="btn4">{{ actividades.0.alternativa3 }}</div>
+        <button id="siguiente">Siguiente</button>
     </div>
-    {% endfor %}
 {% endblock %}

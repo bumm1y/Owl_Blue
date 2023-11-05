@@ -45,8 +45,9 @@ class Explicaciones(models.Model):
 
 class Actividades(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    num_pregunta = models.IntegerField(default=0)
     pregunta = models.CharField(max_length=100, default="")
-    videos = models.CharField(max_length=1000, unique=True)
+    videos = models.TextField(max_length=1000, unique=True)
     respuesta = models.CharField(max_length=100, default="")
     alternativa1 = models.CharField(max_length=100, unique=True, default="")
     alternativa2 = models.CharField(max_length=100, unique=True, default="")
