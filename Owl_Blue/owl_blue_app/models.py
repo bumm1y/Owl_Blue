@@ -1,7 +1,9 @@
 from django.db import models
 from django.core import validators
+from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.core.exceptions import ValidationError
+
 
 ''' Funciones de formularios '''
 def validation_passwd(value):
@@ -12,8 +14,16 @@ def validation_passwd(value):
     if not any(char.isdigit() for char in value): #Ciclo para ver si hay dígitos
         raise ValidationError('La contraseña debe incluir un dígito')
     
-''' Tablas de contenido '''
 
+class InfoUsuario(models.Model):
+    username = models.CharField(max_length=16, unique=True)
+    image = models.CharField(max_length=100, default="img/defaultuser.png")
+    biografia = models.TextField(max_length=1000, default="¡Agrega tu biografía personalizada en el formulario!")
+
+    def __str__(self):
+        return f"{self.username}, {self.image}, {self.biografia}"
+
+''' Tablas de contenido '''
 class Abecedario(models.Model):
     idabc = models.AutoField(primary_key=True)
     letra = models.CharField(max_length=1, unique=True)
@@ -73,12 +83,10 @@ class UsuariosForm(models.Model):
         return f"{self.username}, {self.email}, {self.passwd}"
     
 class Usuarios(models.Model):
-    username = models.CharField(max_length=16, unique=True, validators=[validators.RegexValidator(
-        regex='^[a-zA-Z0-9]+$',
-    )])
-    passwd = models.CharField(max_length=16, validators=[MinLengthValidator(8), MaxLengthValidator(16)])
-    email = models.EmailField(unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE , default="")
+    image = models.ImageField(upload_to='img/perfil/', default="img/defaultuser.png", blank=True, null=True)
+    biografia = models.TextField(max_length=1000, default="¡Agrega tu biografía personalizada en el formulario!")
 
 
     def __str__(self):
-        return f"{self.username}, {self.email}, {self.passwd}"
+        return f"{self.user}, {self.image}, {self.biografia}"

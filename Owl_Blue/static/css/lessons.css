@@ -11,22 +11,28 @@ body {
 }
 
 .contenedor {
-    width: 98vw;
-    height: 97vh;
+    width: 65vw;
+    max-width: 1000px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
+}
+
+.custom-margin-left {
+    margin-left: 10px !important;
 }
 
 .encabezado {
     background: white;
-    min-width: 300px;
+    min-width: 100px;
     width: 70%;
 }
 
 .categoria {
-    opacity: 0,3;
+    opacity: 0.5;
     text-align: left;
 }
 
@@ -50,4 +56,38 @@ body {
 
 .video {
     text-align: center;
+}
+
+/* Agrega estilos a los mensajes de apoyo y consuelo */
+#mensajeApoyo, #mensajeConsuelo {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#mensajeApoyo {
+    color: lightgreen; /* Cambia el color según tus preferencias */
+}
+
+#mensajeConsuelo {
+    color: pink; /* Cambia el color según tus preferencias */
+}
+
+/* Estilos para el botón "Continuar" */
+#continuar {
+    display: none; /* Por defecto, oculta el botón hasta que sea necesario */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgb(128, 203, 234); /* Cambia el color según tus preferencias */
+    color: #fff; /* Texto en color blanco para un mejor contraste */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agrega una transición suave al color de fondo */
+}
+
+#continuar:hover {
+    background-color: #2980b9; /* Cambia el color al pasar el ratón sobre el botón */
 }

@@ -2,27 +2,29 @@
 {% load static %}
 {% block header %}
     <link rel="stylesheet" href="{% static 'css/lessons.css' %}">
-    <script src="{% static 'js/lessons.js' %}"></script> 
+    <script>
+        var categoria = "{{ categoria }}";
+    </script>
+    <script src="{% static 'js/lessons.js' %}" defer></script> 
 {% endblock %}
 {% block content %}
-    <div class="contenedor">
+    <div class="contenedor mt-4">
         <div class="encabezado">
-            <div class="categoria">
-                {{ actividades.0.categoria }} 
+            <div id="categoria" class="categoria custom-margin-left mt-2">
             </div>
-            <div class="pregunta">
-                {{ actividades.0.pregunta }}
+            <div id="pregunta"  class="pregunta">
             </div>
             <p></p>
-            <div class="video">
-                {{ actividades.0.videos|safe }}  
+            <div id="video" class="video"> 
             </div>
             <p></p>
         </div>
-        <div class="btn" id="btn1">{{ actividades.0.respuesta }}</div>
-        <div class="btn" id="btn2">{{ actividades.0.alternativa1 }}</div>
-        <div class="btn" id="btn3">{{ actividades.0.alternativa2 }}</div>
-        <div class="btn" id="btn4">{{ actividades.0.alternativa3 }}</div>
-        <button id="siguiente">Siguiente</button>
+        <div class="btn" id="btn1" onclick="oprimir(0)"></div>
+        <div class="btn" id="btn2" onclick="oprimir(1)"></div>
+        <div class="btn" id="btn3" onclick="oprimir(2)"></div>
+        <div class="btn" id="btn4" onclick="oprimir(3)"></div>
+        <div id="mensajeApoyo"></div>
+        <div id="mensajeConsuelo"></div>
+        <button id="continuar" onclick="cambiarPregunta()">Continuar</button>
     </div>
 {% endblock %}

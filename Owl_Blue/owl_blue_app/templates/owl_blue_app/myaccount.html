@@ -7,7 +7,10 @@
 {% endblock %}
 {% block content %}
     <h1>Mi cuenta</h1>
+    
+    <p>Nombre de usuario: {{ info_user.username }}</p>
+    <p>Imagen de perfil: <img src="{% static info_user.image %}" width="35" height="35"></p>
+    <p>Biografía: {{ info_user.biografia }}</p>
 
 {% endblock %}
-
 
