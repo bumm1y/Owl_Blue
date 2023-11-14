@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, signup, signin, signout, acts, myaccount, abc, preguntas, emociones, familia, capsula0, lessons, lessonJSON, completelesson, failedlesson
+from .views import index, signup, signin, signout, acts, myaccount, abc, preguntas, emociones, familia, capsula0, lessons, lessonJSON, completelesson, failedlesson, escuela, casa, editar_perfil
 
 ''' Rutas para las distintas vistas '''
 urlpatterns = [
@@ -12,8 +12,11 @@ urlpatterns = [
     path('acts/preguntas', preguntas, name='preguntas'),
     path('acts/emociones', emociones, name='emociones'),
     path('acts/familia', familia, name='familia'),
+    path('acts/escuela', escuela, name='escuela'),
+    path('acts/casa', casa, name='casa'),
     path('acts/<str:categoria_elegida>/capsula0/', capsula0, name='capsula0'),
     path('myaccount/', myaccount, name='myaccount'),
+    path('editar_perfil/', editar_perfil, name='editar_perfil'),
     path('acts/<str:categoria_elegida>/capsula0/lessons/', lessons, name='lessons'),
     path('acts/<str:categoria_elegida>/capsula0/lessons/lessonJSON', lessonJSON, name='lessonJSON'),
     path('<str:categoria_elegida>/completelesson/', completelesson, name='completelesson'),

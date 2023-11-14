@@ -10,27 +10,6 @@ let respuestasCorrectas = 0;
 function redirigir(url){
   window.location.href = url;
 }
-function mensajeApoyo() {
-  let mensajes = [
-    "¡Bien hecho!",
-    "¡Has acertado!",
-    "¡Muy bien!",
-    "¡Sigue así!"
-  ];
-  mensajeAleatorio = mensajes.sort(()=>Math.random()-0.5);
-  document.getElementById("mensajeApoyo").innerHTML = mensajeAleatorio[0];
-}
-
-function mensajeConsuelo() {
-  let mensajes = [
-    "Uy, casi le has dado.",
-    "Nop, esta no era.",
-    "Deberías poner un poco más de atención la próxima vez.",
-    "Para la otra sí que lo consigues."
-  ];
-  mensajeAleatorio = mensajes.sort(()=>Math.random()-0.5);
-  return mensajeAleatorio[0];
-}
 
 
 function botonSiguiente() {
@@ -44,7 +23,6 @@ function oprimir(indice, alternativas, respuesta) {
   if (alternativas[indice]==respuesta) {
     respuestasCorrectas++;
     btn_correspondiente[indice].style.background = "lightgreen";
-    mensajeApoyo();
     document.getElementById("btn1").removeEventListener("click", function () {
       oprimir(0, alternativas, respuesta)});
     document.getElementById("btn2").removeEventListener("click", function () {
@@ -56,8 +34,6 @@ function oprimir(indice, alternativas, respuesta) {
     
   }else{
     btn_correspondiente[indice].style.background = "pink";
-    mensaje = mensajeConsuelo() + " La respuesta era: " + respuesta;
-    document.getElementById("mensajeConsuelo").innerHTML = mensaje;
     document.getElementById("btn1").removeEventListener("click", function () {
       oprimir(0, alternativas, respuesta)});
     document.getElementById("btn2").removeEventListener("click", function () {

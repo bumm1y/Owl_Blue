@@ -11,22 +11,15 @@
             <div class="col-md-12 offset-md-0 mt-4">
                 <form method="POST" class="card card-body">
                     {% csrf_token %}
-                    <h1 class="text-center">Abecedario</h1>
+                    <h1 class="text-center">Familia</h1>
                     <p>
-                        <p>Bienvenido a la lección "Abecedario". En esta lección aprenderás las letras del abecedario en lenguaje de señas chilena y serás capaz de conjugar oraciones solamente utilizando letras individuales. Para superar esta lección, debes responder correctamente las 5 actividades que se te darán a continuación luego de ver un pequeño video explicativo y una imagen de apoyo. Si no contestas correctamente la primera vez, recuerda que siempre puedes volver a intentarlo. Mucha suerte!</p>
+                        <p class="text-center">Bienvenido a la lección "Familia". En esta lección aprenderás sobre la familia en lenguaje de señas chileno y serás capaz de comunicarte con tus seres queridos a través de esta lengua. Para superar esta lección, debes responder correctamente las 5 actividades que se te darán a continuación luego de ver un pequeño video explicativo. Si no contestas correctamente la primera vez, recuerda que siempre puedes volver a intentarlo. Mucha suerte!</p>
                     </p>
                     <p></p>
                     <p></p>
                     <p></p>
                     <p></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <button class="btn btn-primary">
-                        <a href="{% url 'capsula0' categoria_elegida %}">Ir a Capsula 0</a>
-                    </button>
+                    <a class="text-center" href="{% url 'capsula0' categoria_elegida %}">Ir a Capsula 0</a>
                 </form>
             </div>
         </div>

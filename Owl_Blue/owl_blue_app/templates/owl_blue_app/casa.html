@@ -1,0 +1,30 @@
+{% extends 'owl_blue_app/base.html' %}
+{% load static %}
+
+{% block header %}
+    <title>Owl Blue | Casa</title>
+    <link rel="stylesheet" href="{% static 'css/casa.css' %}">
+{% endblock %}
+{% block content %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-12 offset-md-0 mt-4">
+                <form method="POST" class="card card-body">
+                    {% csrf_token %}
+                    <h1 class="text-center">Casa</h1>
+                    <p>
+                        <p class="text-center">Bienvenido a la lección "Casa". En esta lección aprenderás sobre los elementos típicos en una casa en lenguaje de señas chileno y serás capaz de pedir que te traigan el control de la televisión en esta lengua. Para superar esta lección, debes responder correctamente las 5 actividades que se te darán a continuación luego de ver un pequeño video explicativo. Si no contestas correctamente la primera vez, recuerda que siempre puedes volver a intentarlo. Mucha suerte!</p>
+                    </p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <a class="text-center" href="{% url 'capsula0' categoria_elegida %}">Ir a Capsula 0</a>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+
+

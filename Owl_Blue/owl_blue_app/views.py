@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import SignupForm, LoginForm
+from .forms import SignupForm, LoginForm, EdicionPerfilForm
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
@@ -111,15 +111,37 @@ def preguntas(request):
 @login_required
 def emociones(request):
     categoria_elegida="Emociones"
-    return render(request, 'owl_blue_app/preguntas.html', {'categoria_elegida': categoria_elegida})
+    return render(request, 'owl_blue_app/emociones.html', {'categoria_elegida': categoria_elegida})
 
 @login_required
 def familia(request):
     categoria_elegida="Familia"
-    return render(request, 'owl_blue_app/preguntas.html', {'categoria_elegida': categoria_elegida})
+    return render(request, 'owl_blue_app/familia.html', {'categoria_elegida': categoria_elegida})
+
+@login_required
+def casa(request):
+    categoria_elegida="Casa"
+    return render(request, 'owl_blue_app/casa.html', {'categoria_elegida': categoria_elegida})
+
+@login_required
+def escuela(request):
+    categoria_elegida="Escuela"
+    return render(request, 'owl_blue_app/escuela.html', {'categoria_elegida': categoria_elegida})
 
 """ Vista cuenta """
 @login_required
 def myaccount(request):
     info_user = InfoUsuario.objects.get(username=request.user.username)
     return render(request, 'owl_blue_app/myaccount.html', {"info_user": info_user})
+
+@login_required
+def editar_perfil(request):
+    info_user = InfoUsuario.objects.get(username=request.user.username)
+    if request.method == 'POST':
+        form = EdicionPerfilForm(request.POST, instance=info_user)
+        if form.is_valid():
+            form.save()
+            return redirect('myaccount')
+    else:
+        form = EdicionPerfilForm(instance=info_user)
+    return render(request, 'owl_blue_app/editar_perfil.html', {'form': form})

@@ -1,10 +1,21 @@
 import re
 from django.core.exceptions import ValidationError
 from django import forms
-from .models import UsuariosForm
+from .models import UsuariosForm, InfoUsuario
 from django.core.validators import validate_email
 
+class EdicionPerfilForm(forms.ModelForm):
+    class Meta:
+        model = InfoUsuario
+        fields = ['biografia', 'image']
+        widgets = {
+            'image': forms.Select(choices=[
+                ('img/defaultuser.png', 'Foto por defecto'),
+                ('img/owlblue_icon.png', 'Prueba')
+            ])
+        }
 
+    
 ''' Formulario personalizado SignUp '''
 class SignupForm(forms.ModelForm):
     password = forms.CharField(
