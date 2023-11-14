@@ -1,6 +1,27 @@
 {% extends 'owl_blue_app/base.html' %}
 {% load static %}
+
 {% block header %}
+    <title>Owl Blue | Lección Completada</title>
+    <link rel="stylesheet" href="{% static 'css/completelesson.css' %}">
 {% endblock %}
 {% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-12 offset-md-0 mt-4">
+            <form method="POST" class="card card-body">
+                {% csrf_token %}
+                <h1 class="text-center"><strong>Casi lo has logrado...</strong></h1>
+                <p>
+                    <p class="text-center">Te ha faltado poco para completar la lección. ¡No te desanimes! Recuerda que siempre puedes volver a intentarlo. De seguro en el próximo intento puedes completar el desafío. ¡A seguir aprendiendo!</p>
+                </p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <a class="text-center" href="{% url 'acts' %}">Volver a Actividades</a>
+            </form>
+        </div>
+    </div>
+</main>
 {% endblock %}
