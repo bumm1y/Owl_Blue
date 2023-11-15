@@ -21,6 +21,9 @@ h1 {
     color: black;
 }
 
+.marg {
+    margin-left: 70px;
+}
 button {
     margin-top: 10px;
 }
