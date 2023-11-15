@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
-from .models import Categoria, Explicaciones, Actividades, InfoUsuario
+from .models import Categoria, Explicaciones, Actividades, InfoUsuario, ProgresoLecciones
 from django.contrib.auth.decorators import login_required
 from random import sample
 
@@ -17,32 +17,46 @@ def lessonJSON(request, categoria_elegida):
 
 @login_required
 def failedlesson(request, categoria_elegida):
-    return render(request, 'owl_blue_app/failedlesson.html', {'categoria_elegida': categoria_elegida})
+    info_user = InfoUsuario.objects.get(username=request.user.username)
+    return render(request, 'owl_blue_app/failedlesson.html', {'categoria_elegida': categoria_elegida, "info_user": info_user})
+
 
 @login_required
 def completelesson(request, categoria_elegida):
-    return render(request, 'owl_blue_app/completelesson.html', {'categoria_elegida': categoria_elegida})
+    info_user = InfoUsuario.objects.get(username=request.user.username)
+    user = request.user
+    categoria = Categoria.objects.get(categoria=categoria_elegida)
+    progreso, created = ProgresoLecciones.objects.get_or_create(user=user, topico=categoria)
+    if not progreso.flag:
+        progreso.flag = True
+        progreso.save() 
+    return render(request, 'owl_blue_app/completelesson.html', {'categoria_elegida': categoria_elegida, "info_user": info_user})
 
 ''' Cápsula 0 '''
 @login_required
 def capsula0(request, categoria_elegida):
+    info_user = InfoUsuario.objects.get(username=request.user.username)
     explicaciones = list(Explicaciones.objects.filter(categoria__categoria=categoria_elegida))
-    return render(request, 'owl_blue_app/capsula0.html', {'categoria_elegida': categoria_elegida, 'explicaciones': explicaciones})
+    return render(request, 'owl_blue_app/capsula0.html', {'categoria_elegida': categoria_elegida, 'explicaciones': explicaciones, "info_user": info_user})
 
 
 ''' Prueba lessons.html '''
 @login_required
 def lessons(request, categoria_elegida):
+    info_user = InfoUsuario.objects.get(username=request.user.username)
     seleccion = sample(range(1,11), 5)
     categoria = categoria_elegida
     actividades = list(Actividades.objects.filter(categoria__categoria=categoria, num_pregunta__in=seleccion))
     request.session['actividades'] = [{'categoria' : categoria, 'num_pregunta': actividad.num_pregunta, 'pregunta': actividad.pregunta, 'videos': actividad.videos, 'respuesta': actividad.respuesta, 'alternativa1': actividad.alternativa1, 'alternativa2': actividad.alternativa2, 'alternativa3': actividad.alternativa3} for actividad in actividades]
-    return render(request, 'owl_blue_app/lessons.html', {'categoria': categoria, 'actividades': actividades})
+    return render(request, 'owl_blue_app/lessons.html', {'categoria': categoria, 'actividades': actividades, "info_user": info_user})
 
 # Página home
 def index(request):
+    info_user = None
+    if request.user.is_authenticated:
+        info_user = InfoUsuario.objects.get(username=request.user.username)
     mensaje_confirmacion = request.session.pop('mensaje_confirmacion', None) # <-- Verifica el mensaje de confirmación
-    return render(request, 'owl_blue_app/index.html', {'mensaje_confirmacion': mensaje_confirmacion})# <-- 'Carga' la página home y envía el mensaje de confirmación
+    return render(request, 'owl_blue_app/index.html', {'mensaje_confirmacion': mensaje_confirmacion, "info_user": info_user})# <-- 'Carga' la página home y envía el mensaje de confirmación
 
 # Registro de usuarios
 def signup(request):
@@ -94,45 +108,54 @@ def signout(request):
 
 @login_required # Se necesita estar logeado para ingresar a actividades
 def acts(request):
+    info_user = InfoUsuario.objects.get(username=request.user.username)
     acts = Categoria.objects.all()
     return render(request, 'owl_blue_app/acts.html', {
-        'acts': acts})
+        'acts': acts, "info_user": info_user})
 
 @login_required
 def abc(request):
+    info_user = InfoUsuario.objects.get(username=request.user.username)
     categoria_elegida="Abecedario"
-    return render(request, 'owl_blue_app/abc.html', {'categoria_elegida': categoria_elegida})
+    return render(request, 'owl_blue_app/abc.html', {'categoria_elegida': categoria_elegida, "info_user": info_user})
 
 @login_required
 def preguntas(request):
+    info_user = InfoUsuario.objects.get(username=request.user.username)
     categoria_elegida="Preguntas"
-    return render(request, 'owl_blue_app/preguntas.html', {'categoria_elegida': categoria_elegida})
+    return render(request, 'owl_blue_app/preguntas.html', {'categoria_elegida': categoria_elegida, "info_user": info_user})
 
 @login_required
 def emociones(request):
+    info_user = InfoUsuario.objects.get(username=request.user.username)
     categoria_elegida="Emociones"
-    return render(request, 'owl_blue_app/emociones.html', {'categoria_elegida': categoria_elegida})
+    return render(request, 'owl_blue_app/emociones.html', {'categoria_elegida': categoria_elegida, "info_user": info_user})
 
 @login_required
 def familia(request):
+    info_user = InfoUsuario.objects.get(username=request.user.username)
     categoria_elegida="Familia"
-    return render(request, 'owl_blue_app/familia.html', {'categoria_elegida': categoria_elegida})
+    return render(request, 'owl_blue_app/familia.html', {'categoria_elegida': categoria_elegida, "info_user": info_user})
 
 @login_required
 def casa(request):
+    info_user = InfoUsuario.objects.get(username=request.user.username)
     categoria_elegida="Casa"
-    return render(request, 'owl_blue_app/casa.html', {'categoria_elegida': categoria_elegida})
+    return render(request, 'owl_blue_app/casa.html', {'categoria_elegida': categoria_elegida, "info_user": info_user})
 
 @login_required
 def escuela(request):
+    info_user = InfoUsuario.objects.get(username=request.user.username)
     categoria_elegida="Escuela"
-    return render(request, 'owl_blue_app/escuela.html', {'categoria_elegida': categoria_elegida})
+    return render(request, 'owl_blue_app/escuela.html', {'categoria_elegida': categoria_elegida, "info_user": info_user})
 
 """ Vista cuenta """
 @login_required
 def myaccount(request):
+    user = request.user
     info_user = InfoUsuario.objects.get(username=request.user.username)
-    return render(request, 'owl_blue_app/myaccount.html', {"info_user": info_user})
+    progreso_lecciones = ProgresoLecciones.objects.filter(user=user)
+    return render(request, 'owl_blue_app/myaccount.html', {"info_user": info_user, "progreso_lecciones": progreso_lecciones})
 
 @login_required
 def editar_perfil(request):
@@ -144,4 +167,4 @@ def editar_perfil(request):
             return redirect('myaccount')
     else:
         form = EdicionPerfilForm(instance=info_user)
-    return render(request, 'owl_blue_app/editar_perfil.html', {'form': form})
+    return render(request, 'owl_blue_app/editar_perfil.html', {'form': form, "info_user": info_user})

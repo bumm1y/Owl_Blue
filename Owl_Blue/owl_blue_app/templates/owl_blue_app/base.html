@@ -34,9 +34,7 @@
                                 <a class="nav-link" href="/logout">Cerrar sesión</a>
                             </li>
                             <li class="nav-item">
-                                <div class="black custom-card">
-                                    <a class="nav-link" href="/myaccount"><img src="{% static 'img/defaultuser.png' %}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top custom-logo"></a>
-                                </div>
+                                <a class="nav-link" href="/myaccount"><img src="{% static info_user.image %}" alt="Usuario" width="30" height="30" class="d-inline-block align-text-top custom-logo rounded-circle" ></a>
                             </li>
                         {% else %}
                             <li class="nav-item">    

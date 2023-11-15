@@ -1,4 +1,38 @@
+
 body {
-    background: rgb(128, 203, 234);
+    background-color: rgb(128, 203, 234);
+}
+
+.container {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
     color: black;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav li {
+    margin-bottom: 10px;
+}
+
+.item-mod a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.item-mod a:hover {
+    color: #0056b3;
 }

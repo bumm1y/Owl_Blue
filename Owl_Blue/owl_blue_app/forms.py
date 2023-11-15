@@ -7,11 +7,15 @@ from django.core.validators import validate_email
 class EdicionPerfilForm(forms.ModelForm):
     class Meta:
         model = InfoUsuario
-        fields = ['biografia', 'image']
+        fields = ['image']
         widgets = {
             'image': forms.Select(choices=[
                 ('img/defaultuser.png', 'Foto por defecto'),
-                ('img/owlblue_icon.png', 'Prueba')
+                ('img/owlblue_icon.png', 'Icono 1'),
+                ('img/owlblue_icon2.png', 'Icono 2'),
+                ('img/owlblue_icon3.png', 'Icono 3'),
+                ('img/owlblue_icon4.png', 'Icono 4'),
+                ('img/owlblue_icon5.png', 'Icono 5'),
             ])
         }
 

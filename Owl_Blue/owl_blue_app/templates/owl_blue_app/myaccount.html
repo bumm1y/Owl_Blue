@@ -5,11 +5,29 @@
     <title>Owl Blue | Mi Cuenta</title>
     <link rel="stylesheet" href="{% static 'css/myaccount.css' %}">
 {% endblock %}
+
 {% block content %}
-    <p>Nombre de usuario: {{ info_user.username }}</p>
-    <p>Imagen de perfil: <img src="{% static info_user.image %}" width="35" height="35"></p>
-    <p>Biografía: {{ info_user.biografia }}</p>
-    <a href="{% url 'editar_perfil' %}">Editar perfil</a>
-
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="mb-4">{{ info_user.username }} <img src="{% static info_user.image %}" width="35" height="35" class="rounded-circle"></p></h1>
+                <a href="{% url 'editar_perfil' %}" class="btn btn-primary">Editar perfil</a>
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-4">Progreso</h2>
+                <ul class="list-group">
+                    {% for progreso_leccion in progreso_lecciones %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ progreso_leccion.topico }}
+                            {% if progreso_leccion.flag %}
+                                <span class="badge bg-success">Completada</span>
+                            {% else %}
+                                <span class="badge bg-warning text-dark">Pendiente</span>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}
-

@@ -1,3 +1,38 @@
 body {
     background: rgb(128, 203, 234);
 }
+
+.container {
+    background-color: white;
+    max-width: 350px;
+    margin: auto;
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+form {
+    max-width: 300px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+}
+
+button {
+    margin-top: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+div.mb-3 {
+    text-align: center;
+}

@@ -3,17 +3,21 @@
 
 {% block header %}
     <title>Owl Blue | Actividades</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/acts.css' %}">
 {% endblock %}
+
 {% block content %}
-    <h1> ACTIVIDADES </h1>
-    <nav>
-        <ul>
-            {% for act in acts %} <!--Imprime en un ciclo 'for' cada categoria en la clase 'Categoria'-->
-            <li class="nav-item">
-                <a class="nav-link" href="/acts/{{ act.categoria|lower}}">{{act.categoria}}</a>
-            </li>
-            {% endfor %}
-        </ul>
-    </nav>
+    <div class="container">
+        <h1>ACTIVIDADES</h1>
+        <nav>
+            <ul>
+                {% for act in acts %}
+                    <li class="nav-item item-mod">
+                        <a class="nav-link" href="/acts/{{ act.categoria|lower }}">{{ act.categoria }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
 {% endblock %}
