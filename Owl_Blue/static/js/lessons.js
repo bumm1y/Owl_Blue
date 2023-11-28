@@ -14,8 +14,6 @@ function redirigir(url){
 
 function botonSiguiente() {
   document.getElementById("continuar").style.display = "block";
-  document.getElementById("mensajeConsuelo").innerHTML = "";
-  document.getElementById("mensajeApoyo").innerHTML = "";
 }
 
 function oprimir(indice, alternativas, respuesta) {

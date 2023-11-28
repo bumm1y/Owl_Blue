@@ -21,10 +21,9 @@ def validation_passwd(value):
 class InfoUsuario(models.Model):
     username = models.CharField(max_length=16, unique=True)
     image = models.CharField(max_length=100, default="img/defaultuser.png")
-    biografia = models.TextField(max_length=1000, default="¡Agrega tu biografía personalizada en el formulario!")
 
     def __str__(self):
-        return f"{self.username}, {self.image}, {self.biografia}"
+        return f"{self.username}, {self.image}"
 
 ''' Tablas de contenido '''
 class Abecedario(models.Model):
