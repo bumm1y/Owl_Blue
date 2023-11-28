@@ -17,6 +17,7 @@ h1 {
     text-align: center;
 }
 
+/* estilo lista desordenada */
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -27,12 +28,14 @@ nav li {
     margin-bottom: 10px;
 }
 
+/* fuente de tópico */
 .item-mod a {
     text-decoration: none;
     color: black;
     font-weight: bold;
 }
 
+/* estilo de selección */
 .item-mod a:hover {
     color: #0056b3;
 }

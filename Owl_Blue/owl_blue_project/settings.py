@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'owl_blue_app',
+    'owl_blue_app', # owlblue app
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'owl_blue_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+DATABASES = { #Uso de .env
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': config('DB_NAME'),
@@ -123,11 +123,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # Dirección de la carpeta 'static'
-
-""" Media proporcionada por el usuario (Personalización de cuenta) """
-
-MEDIA_URL= '/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR, 'media') # Dirección de la carpeta 'media'
 
 
 # Login URL (Ingreso a 'Actividades' sin estar logeado)

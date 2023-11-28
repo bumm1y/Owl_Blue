@@ -15,9 +15,6 @@ def validation_passwd(value):
         raise ValidationError('La contraseña debe incluir un dígito')
     
 
-
-
-
 class InfoUsuario(models.Model):
     username = models.CharField(max_length=16, unique=True)
     image = models.CharField(max_length=100, default="img/defaultuser.png")
@@ -89,14 +86,13 @@ class Usuarios(models.Model):
     image = models.ImageField(upload_to='img/perfil/', default="img/defaultuser.png", blank=True, null=True)
     biografia = models.TextField(max_length=1000, default="¡Agrega tu biografía personalizada en el formulario!")
 
-
     def __str__(self):
         return f"{self.user}, {self.image}, {self.biografia}"
 
 class ProgresoLecciones(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     topico = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    flag = models.BooleanField(default=False)
+    flag = models.BooleanField(default=False) #check lección completada
 
     def __str__(self):
         return f"{self.user}, {self.topico}, {self.flag}"

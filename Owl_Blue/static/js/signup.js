@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const emailInput = document.getElementById("id_email");
     const emailValidation = document.getElementById("email-validation");
     // Mostrar mensajes de error
+    //Selección de campo
     emailInput.addEventListener("focus", function(e) {
         const email = emailInput.value;
         const emailValid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email); //Validación de email
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    //Desenfoque del campo
     emailInput.addEventListener("blur", function() {
         const email = emailInput.value;
         const emailValid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
@@ -52,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } 
     });
 
+    //Corrección en tiempo real}
     emailInput.addEventListener("input", function() {
         const email = emailInput.value;
         const emailValid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
@@ -119,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
             errorAlert(passwordValidation, "Tu contraseña debe tener 8 caracteres como mínimo (y 16 como máximo). <br> Tu contraseña debe contener, al menos, una minúscula, un número y una mayúscula.");
             passwordInput.setCustomValidity("La contraseña es inválida.");
             passwordInput.focus();
-            e.preventDefault();
+            e.preventDefault(); //evita acumulación de mensajes
         } else {
             passwordValidation.innerHTML = "";
             passwordValidation.style.display = "none";

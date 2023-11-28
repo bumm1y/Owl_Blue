@@ -1,132 +1,100 @@
 {% extends 'owl_blue_app/base.html' %}
 {% load static %}
+
 {% block header %}
     <title>Owl Blue | Home</title>
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <script src="{% static 'js/index.js' %}"></script> <!-- Mensaje de confirmación en js-->
+    <script src="{% static 'js/index.js' %}"></script>
 {% endblock %}
+
 {% block content %}
-   <!-- Mensaje de confirmación (post-registro) -->
-{% if mensaje_confirmacion %}
-<div id="bienvenida">
-    {{ mensaje_confirmacion }}
-</div>
-{% endif %}
+    {% if mensaje_confirmacion %}
+        <div class="container mt-4">
+            <div class="alert alert-success" role="alert">
+                {{ mensaje_confirmacion }}
+            </div>
+        </div>
+    {% endif %}
 
-<main class="container-fluid">
-    
-    <div class="row">
-        <div>
-            <p style="font-size: 15px;">
-
-                <h1>Bienvenido a Olw Blue</h1>
-
-                <div class="cuadro-con-bordes">    
-                
-                    "Owl Blue". Se trata de un proyecto estudiantil que busca<br>
-                    aproximar a los usuarios al lenguaje de señas chileno,<br>
-                    empezando por lo fundamental como lo es el abecedario y <br>
-                    tocando uno que otro tópico, dentro de las posibilidades.
-                    
+    <main class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Bienvenido a Owl Blue</h1>
+                <div class="cuadro-con-bordes p-3">
+                    "Owl Blue". Se trata de un proyecto estudiantil que busca aproximar a los usuarios al lenguaje de señas chileno, empezando por lo fundamental como lo es el abecedario y tocando uno que otro tópico, dentro de las posibilidades.
                 </div>
 
+                <div class="topicos mt-4">
+                    <h3 class="mb-3">Tópicos disponibles:</h3>
 
-                <div class="topicos">
-
-                    <h3 style="text-decoration: underline;">Tópicos disponibles:</h3>
-
-                    <div class="imagen_abc_topico">
-
-                        <img src="{% static 'img/abc_sf.png' %}" width="30" height="30">
+                    <div class="imagen_abc_topico d-flex align-items-center">
+                        <img src="{% static 'img/abc_sf.png' %}" width="30" height="30" class="me-2">
                         <p>Abecedario: ¡Habla tus primeras palabras con el alfabeto!</p>
-
                     </div>
-
-                    <div class="imagen_preguntas_topico">
-
+                    <div class="imagen_abc_topico d-flex align-items-center">
                         <img src="{% static 'img/pregunta_sf.png' %}" width="30" height="30">
                         <p>Preguntas: ¿Quieres descubrir cómo preguntar en lengua de señas?</p>
-
                     </div>
-
-                    <div class="imagen_emociones_topico">
-
+                    <div class="imagen_abc_topico d-flex align-items-center">
                         <img src="{% static 'img/emociones_sf.png' %}" width="30" height="30">
                         <p>Emociones: ¡Exprésate con lengua de señas!</p>
-
                     </div>
-
-                    <div class="imagen_familia_topico">
-
+                    <div class="imagen_abc_topico d-flex align-items-center">
                         <img src="{% static 'img/familia_sf.png' %}" width="30" height="30">
                         <p>Familia: ¡Contagia el lenguaje a tus familiares!</p>
-
                     </div>
-
-                    <div class="imagen_casa_topico">
-
+                    <div class="imagen_abc_topico d-flex align-items-center">
                         <img src="{% static 'img/casa-_sf.png' %}" width="40" height="40">
                         <p>Casa: ¡Describe tu casa de manera única!</p>
-
                     </div>
-
-                    <div class="imagen_escuela_topico">
-
+                    <div class="imagen_abc_topico d-flex align-items-center">
                         <img src="{% static 'img/colegio_sf.png' %}" width="35" height="35">
                         <p>Escuela: ¡Muestra tu desconcierto de los contenidos en lengua de señas!</p>
-
                     </div>
-                    
                 </div>
-                
-                <strong>¿Por qué no te aventuras a probar esta experiencia? ¡Seguro que no te arrepentirás!</strong>
-                <br><br>
-                Y también, como sabemos lo aplicado que eres, te dejamos también unos enlaces para visualizar los dos volúmenes sobre el diccionario que ha entregado el MINEDUC en su propia página web.
-                <br><br>
-                <strong>¡A seguir aprendiendo y disfrutar!</strong>
-                <br><br>
-                <a href="https://especial.mineduc.cl/wp-content/uploads/sites/31/2018/07/Diccionario_LSCh_A-H.pdf">Diccionario desde la A-H. Vol. 1</a>
-                <br>
-                <a href="https://especial.mineduc.cl/wp-content/uploads/sites/31/2018/07/Diccionario_LSCh_I-Z.pdf">Diccionario desde la I-Z. Vol. 2</a>
-            </p>
+
+                <p class="mt-4">
+                    <strong>¿Por qué no te aventuras a probar esta experiencia? ¡Seguro que no te arrepentirás!</strong>
+                    <br><br>
+                    Y también, como sabemos lo aplicado que eres, te dejamos unos enlaces para visualizar los dos volúmenes sobre el diccionario que ha entregado el MINEDUC en su propia página web.
+                    <br><br>
+                    <strong>¡A seguir aprendiendo y disfrutar!</strong>
+                    <br><br>
+                    <a href="https://especial.mineduc.cl/wp-content/uploads/sites/31/2018/07/Diccionario_LSCh_A-H.pdf" class="btn btn-primary" target="_blank">Diccionario desde la A-H. Vol. 1</a>
+                    <a href="https://especial.mineduc.cl/wp-content/uploads/sites/31/2018/07/Diccionario_LSCh_I-Z.pdf" class="btn btn-primary" target="_blank">Diccionario desde la I-Z. Vol. 2</a>
+                </p>
+            </div>
         </div>
 
-        
-    </div>
-
-
-    <div class="container-fluid info-contacto mt-0 mb-0 pt-0 pb-0">
-        <div class="row">
-            <div class="col-md-3">
-                <img src="{% static 'img/usm_logo.png' %}" alt="Logo USM" width="100">
-            </div>
-            <div class="col-md-9">
-                <h4>Contacto de los creadores:</h4>
-                <div class="d-flex flex-row">
-                    <div style="margin-right: 20px;">
-                        <strong>Benjamín Echeverría:</strong>
-                        <br>
-                        <p>becheverria@usm.cl</p>
-                    </div>
-                    <div style="margin-right: 20px;">
-                        <strong>Matías Gómez:</strong>
-                        <br>
-                        <p>mgomez@usm.cl</p>
-                    </div>
-                    <div style="margin-right: 20px;">
-                        <strong>Daniel Lagos:</strong>
-                        <br>
-                        <p>dlagos@usm.cl</p>
-                    </div>
-                    <div style="margin-right: 20px;">
-                        <strong>Matías Riquelme:</strong>
-                        <br>
-                        <p>mriquelme@usm.cl</p>
+        <div class="container-fluid info-contacto mt-4">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="{% static 'img/usm_logo.png' %}" alt="Logo USM" width="100">
+                </div>
+                <div class="col-md-9">
+                    <h4>Contacto de los creadores:</h4>
+                    <div class="d-flex flex-wrap">
+                        <div class="contacto-item me-4">
+                            <strong>Benjamín Echeverría:</strong>
+                            <p>becheverria@usm.cl</p>
+                        </div>
+                        <div style="margin-right: 20px;">
+                            <strong>Matías Gómez:</strong>
+                            <br>
+                            <p>mgomez@usm.cl</p>
+                        </div>
+                        <div style="margin-right: 20px;">
+                            <strong>Daniel Lagos:</strong>
+                            <br>
+                            <p>dlagos@usm.cl</p>
+                        </div>
+                        <div style="margin-right: 20px;">
+                            <strong>Matías Riquelme:</strong>
+                            <br>
+                            <p>mriquelme@usm.cl</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 {% endblock %}
-

@@ -1,8 +1,10 @@
 // Mensaje de bienvenida
 document.addEventListener('DOMContentLoaded', function () { // Verificador de la carga del html
     
+    // Función mensaje de confirmaci{on}
     function successAlert(contenedor, mensaje) {
-        contenedor.classList.add("alert", "alert-success");
+        //manejo de clases html
+        contenedor.classList.add("alert", "alert-success"); 
         contenedor.innerHTML=mensaje;
         contenedor.style.display="block";
         setTimeout(function() {

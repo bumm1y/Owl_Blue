@@ -8,11 +8,12 @@ from .models import Categoria, Explicaciones, Actividades, InfoUsuario, Progreso
 from django.contrib.auth.decorators import login_required
 from random import sample
 
+
 ''' Respuestas JSON '''
 @login_required
 def lessonJSON(request, categoria_elegida):
     actividades = request.session.get('actividades', [])
-    response = {'actividades': actividades}
+    response = {'actividades': actividades} # datos en formato JSON
     return JsonResponse(response)
 
 @login_required
@@ -27,7 +28,7 @@ def completelesson(request, categoria_elegida):
     user = request.user
     categoria = Categoria.objects.get(categoria=categoria_elegida)
     progreso, created = ProgresoLecciones.objects.get_or_create(user=user, topico=categoria)
-    if not progreso.flag:
+    if not progreso.flag: # Verifica el estado de flag
         progreso.flag = True
         progreso.save() 
     return render(request, 'owl_blue_app/completelesson.html', {'categoria_elegida': categoria_elegida, "info_user": info_user})
@@ -44,9 +45,9 @@ def capsula0(request, categoria_elegida):
 @login_required
 def lessons(request, categoria_elegida):
     info_user = InfoUsuario.objects.get(username=request.user.username)
-    seleccion = sample(range(1,11), 5)
+    seleccion = sample(range(1,11), 5) # selección indice
     categoria = categoria_elegida
-    actividades = list(Actividades.objects.filter(categoria__categoria=categoria, num_pregunta__in=seleccion))
+    actividades = list(Actividades.objects.filter(categoria__categoria=categoria, num_pregunta__in=seleccion)) # extracción preguntas
     request.session['actividades'] = [{'categoria' : categoria, 'num_pregunta': actividad.num_pregunta, 'pregunta': actividad.pregunta, 'videos': actividad.videos, 'respuesta': actividad.respuesta, 'alternativa1': actividad.alternativa1, 'alternativa2': actividad.alternativa2, 'alternativa3': actividad.alternativa3} for actividad in actividades]
     return render(request, 'owl_blue_app/lessons.html', {'categoria': categoria, 'actividades': actividades, "info_user": info_user})
 
@@ -65,10 +66,19 @@ def signup(request):
         form = SignupForm() # <-- formulario personalizado
         return render(request, 'owl_blue_app/signup.html', {'form' : form}) # <-- 'Carga' la página signup
     else:
-        form = SignupForm()
-        try:
-            user = User.objects.create_user(email=request.POST['email'],
-            username=request.POST['username'], password=request.POST['password1'])
+        ''' Tratamiento de datos enviados'''
+        form = SignupForm(request.POST)
+        email = request.POST['email']
+        username = request.POST['username']
+        password = request.POST['password1']
+        ''' Verificación de usuario en bbdd '''
+        if User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists():
+            return render(request, 'owl_blue_app/signup.html', { 
+                'form': form, 'error': 'El usuario o correo ingresado ya existe.'})
+        else:
+            ''' Creación del usuario en modelos pertinentes'''
+            user = User.objects.create_user(email=email,
+            username=username, password=password)
             user.save() # <-- Guardado en BBDD
             info_user = InfoUsuario(username=user.username)
             info_user.save()
@@ -76,9 +86,7 @@ def signup(request):
             mensaje_confirmacion = f"¡Usuario creado exitosamente!"
             request.session['mensaje_confirmacion'] = mensaje_confirmacion
             return redirect('home')
-        except IntegrityError:
-            return render(request, 'owl_blue_app/signup.html', {
-        'form': form, 'error': 'El usuario o correo ingresado ya existe.'})
+       
 
 # Login
 def signin(request):
@@ -154,17 +162,17 @@ def escuela(request):
 def myaccount(request):
     user = request.user
     info_user = InfoUsuario.objects.get(username=request.user.username)
-    progreso_lecciones = ProgresoLecciones.objects.filter(user=user)
+    progreso_lecciones = ProgresoLecciones.objects.filter(user=user) #progreso lecciones
     return render(request, 'owl_blue_app/myaccount.html', {"info_user": info_user, "progreso_lecciones": progreso_lecciones})
 
 @login_required
 def editar_perfil(request):
     info_user = InfoUsuario.objects.get(username=request.user.username)
     if request.method == 'POST':
-        form = EdicionPerfilForm(request.POST, instance=info_user)
+        form = EdicionPerfilForm(request.POST, instance=info_user) #se visualiza el formulario
         if form.is_valid():
-            form.save()
+            form.save() #se guardan los cambios
             return redirect('myaccount')
     else:
-        form = EdicionPerfilForm(instance=info_user)
+        form = EdicionPerfilForm(instance=info_user) # se mantienen los cambios anteriores
     return render(request, 'owl_blue_app/editar_perfil.html', {'form': form, "info_user": info_user})

@@ -23,52 +23,52 @@ body {
 
 .cuadro-con-bordes {
 
-    border: 2px solid black; /* Borde de 2 píxeles en color negro */
-    padding: 15px; /* Espaciado interno */
-    text-align: center; /* Alineación del texto al centro */
-    background-color: #cfe7eb; /* Color de fondo del cuadro */
-    width: 450px; /* Ancho del cuadro (ajusta según tus necesidades) */
-    border-radius: 10px; /* Bordes redondeados */
+    border: 2px solid black; 
+    padding: 15px; 
+    text-align: center; 
+    background-color: #cfe7eb; 
+    width: 450px; 
+    border-radius: 10px; 
 }
 
 .imagen_abc_topico {
 
-    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
-    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    display: flex ; 
+    align-items: center ; 
     
 }
 
 .imagen_preguntas_topico{
 
-    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
-    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    display: flex ; 
+    align-items: center ; 
     
 }
 
 .imagen_emociones_topico{
 
-    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
-    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    display: flex ; 
+    align-items: center ; 
     
 }
 
 .imagen_familia_topico{
 
-    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
-    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    display: flex ; 
+    align-items: center ; 
     
 }
 
 .imagen_casa_topico{
 
-    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
-    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    display: flex ; 
+    align-items: center ; 
     
 }
 
 .imagen_escuela_topico{
 
-    display: flex ; /* Permite que la imagen y el texto estén en la misma línea */
-    align-items: center ; /* Alinea verticalmente el contenido en el centro */
+    display: flex ; 
+    align-items: center ; 
     
 }

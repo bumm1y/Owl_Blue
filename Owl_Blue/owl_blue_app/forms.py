@@ -9,6 +9,7 @@ class EdicionPerfilForm(forms.ModelForm):
         model = InfoUsuario
         fields = ['image']
         widgets = {
+            # imágenes precargadas
             'image': forms.Select(choices=[
                 ('img/defaultuser.png', 'Foto por defecto'),
                 ('img/owlblue_icon.png', 'Icono 1'),
